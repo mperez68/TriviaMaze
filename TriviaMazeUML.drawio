@@ -1,5 +1,5 @@
-<mxfile host="app.diagrams.net" modified="2020-11-23T09:45:38.420Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36" etag="vmInR0EFg2yHOsIcCq7O" version="13.10.1" type="github" pages="2">
-  <diagram id="XyyNMdZnDAp5m6hMYraF" name="Map">
+<mxfile host="app.diagrams.net" modified="2020-11-23T09:48:36.031Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36" etag="3tFLdZddzOlLm8daluDP" version="13.10.1" type="github" pages="2">
+  <diagram id="XyyNMdZnDAp5m6hMYraF" name="Map W/ GUI">
     <mxGraphModel dx="1888" dy="1717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="yQZkwA7UHE0xO4TTJq5N-0" />
@@ -17,7 +17,7 @@
           <mxGeometry y="178" width="250" height="142" as="geometry" />
         </mxCell>
         <mxCell id="dADPFJAoyI-Bh-tjwwym-5" value="Room" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="yQZkwA7UHE0xO4TTJq5N-1">
-          <mxGeometry x="320" y="40" width="270" height="180" as="geometry" />
+          <mxGeometry x="320" y="40" width="270" height="200" as="geometry" />
         </mxCell>
         <mxCell id="dADPFJAoyI-Bh-tjwwym-6" value="-myAdjacentDoors: Door[4]&#xa;-myX: int&#xa;-myY: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="dADPFJAoyI-Bh-tjwwym-5">
           <mxGeometry y="26" width="270" height="54" as="geometry" />
@@ -25,8 +25,8 @@
         <mxCell id="dADPFJAoyI-Bh-tjwwym-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="dADPFJAoyI-Bh-tjwwym-5">
           <mxGeometry y="80" width="270" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="dADPFJAoyI-Bh-tjwwym-8" value="+Room(theX: int, theY: int)&#xa;+draw()&#xa;+isNotLocked(theDirection: Direction): boolean&#xa;#setDoor(theDirection: Direction, theDoor: Door)&#xa;+attempt(theDirection: Direction)&#xa;toString()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="dADPFJAoyI-Bh-tjwwym-5">
-          <mxGeometry y="88" width="270" height="92" as="geometry" />
+        <mxCell id="dADPFJAoyI-Bh-tjwwym-8" value="+Room(theX: int, theY: int)&#xa;+draw()&#xa;+isNotLocked(theDirection: Direction): boolean&#xa;#setDoor(theDirection: Direction, theDoor: Door)&#xa;+attempt(theDirection: Direction)&#xa;toString()&#xa;getDoor(): Door" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="dADPFJAoyI-Bh-tjwwym-5">
+          <mxGeometry y="88" width="270" height="112" as="geometry" />
         </mxCell>
         <mxCell id="dADPFJAoyI-Bh-tjwwym-9" value="&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Direction&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;" vertex="1" parent="yQZkwA7UHE0xO4TTJq5N-1">
           <mxGeometry x="640" y="40" width="100" height="100" as="geometry" />
@@ -35,7 +35,7 @@
           <mxGeometry y="40" width="100" height="60" as="geometry" />
         </mxCell>
         <mxCell id="dADPFJAoyI-Bh-tjwwym-11" value="Door" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="yQZkwA7UHE0xO4TTJq5N-1">
-          <mxGeometry x="320" y="280" width="400" height="210" as="geometry">
+          <mxGeometry x="320" y="280" width="400" height="230" as="geometry">
             <mxRectangle x="320" y="280" width="60" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -45,8 +45,8 @@
         <mxCell id="dADPFJAoyI-Bh-tjwwym-13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="dADPFJAoyI-Bh-tjwwym-11">
           <mxGeometry y="90" width="400" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="dADPFJAoyI-Bh-tjwwym-14" value="+Door(myX: int, myY: int, myQuestion: Question)&#xa;+Door(myX: int, myY: int, myQuestion: Question, myAccess: AccessLevel)&#xa;+draw()&#xa;+canPass(): boolean&#xa;+isNotLocked(): boolean&#xa;+attempt()&#xa;+toString()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="dADPFJAoyI-Bh-tjwwym-11">
-          <mxGeometry y="98" width="400" height="112" as="geometry" />
+        <mxCell id="dADPFJAoyI-Bh-tjwwym-14" value="+Door(myX: int, myY: int, myQuestion: Question)&#xa;+Door(myX: int, myY: int, myQuestion: Question, myAccess: AccessLevel)&#xa;+draw()&#xa;+canPass(): boolean&#xa;+isNotLocked(): boolean&#xa;+attempt()&#xa;+toString()&#xa;+getQuestion(): Question" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="dADPFJAoyI-Bh-tjwwym-11">
+          <mxGeometry y="98" width="400" height="132" as="geometry" />
         </mxCell>
         <mxCell id="dADPFJAoyI-Bh-tjwwym-15" value="&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;AccessLevel&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;" vertex="1" parent="yQZkwA7UHE0xO4TTJq5N-1">
           <mxGeometry x="70" y="440" width="140" height="90" as="geometry" />
@@ -138,7 +138,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram name="Map Alternate" id="OqVr6r8BjY_I1m1uOYei">
+  <diagram name="Map W/ Separate GUI" id="OqVr6r8BjY_I1m1uOYei">
     <mxGraphModel dx="1888" dy="1717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="nilwV3S37kPE2PX3a-2A-0" />
