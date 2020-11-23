@@ -12,10 +12,12 @@ import map.Question;
  * This class defines the Door object which contains a Question object. Can be prompted to present the question and attempt
  * an answer from the player. This will open or lock the door as is appropriate.
  * 
- * @author Marc Perez (perezm68)
- * @date 11/16/2020
- * @version 1.0
+ * Version 2.0: Added method changeState(), added constructor Door(theX, theY, theAccess, theQuestion).
  *
+ * @author Marc Perez (perezm68)
+ * @author Logan Crawford (crawfl5)
+ * @date 11/22/2020
+ * @version 2.0
  */
 public class Door {
 	/**
@@ -38,6 +40,7 @@ public class Door {
 	 * Y Coordinate, relative to (0,0) point.
 	 */
 	private int myY;
+	
 	/**
 	 * Constructor. Requires X and Y coordinates. Sets all doors automatically to closed.
 	 * @param theX Room 'X' coordinate on draw grid determined by placement on Map grid.
@@ -50,6 +53,21 @@ public class Door {
 		myAccess = AccessLevel.CLOSED;
 		myQuestion = theQuestion;	
 	}
+	
+	/**
+	 * Constructor. Requires X and Y coordinates. Sets all doors automatically to predetermined access level.
+	 * @param theX Room 'X' coordinate on draw grid determined by placement on Map grid.
+	 * @param theY Room 'Y' coordinate on draw grid determined by placement on Map grid.
+	 * @param theAccess The predetermined access level.
+	 * @param theQuestion The question object that must be answered to pass this door.
+	 */
+	public Door(int theX, int theY, AccessLevel, theAccess, Question theQuestion) {
+		myX = theX;
+		myY = theY;
+		myAccess = theAccess;
+		myQuestion = theQuestion;	
+	}
+	
 	/**
 	 * Redraws the door. refers to it's own location.
 	 */
@@ -57,6 +75,7 @@ public class Door {
 		// TODO implement as GUI draw
 		System.out.printf("[" + myAccess.toString() + " Door @ (" + myX + ", " + myY + ")]");
 	}
+	
 	/**
 	 * returns true if player can pass through this door and False if it is closed or locked.
 	 * @return
@@ -68,6 +87,7 @@ public class Door {
 		}
 		return passFlag;
 	}
+	
 	/**
 	 * Getter for if the door is locked.
 	 * @return Truth value of if the door is locked.
@@ -79,6 +99,15 @@ public class Door {
 		}
 		return lockedFlag;
 	}
+	
+	/**
+	 * Setter for access level of door (open, closed, locked).
+	 * @param The new access level of the door.
+	 */
+	public void changeState(AccessLevel state) {
+		myAccess = state;
+	}
+	
 	/**
 	 * Attempt to enter the door. Prompts the player with a question.
 	 */

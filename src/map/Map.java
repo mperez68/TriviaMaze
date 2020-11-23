@@ -6,15 +6,22 @@
 package map;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Set;
+import java.util.HashSet
 
 import map.Room;
 import map.Room.Direction;
+import map.Door.AccessLevel;
 /**
  * Encapsulating Container class. Holds a grid of all Rooms in game session, which in turn hold all Door and Question
  * objects. Includes public methods that allow manipulation 
+ *
+ * Version 2.0: Added method winPossible(), method win(), developed save/load format.
+ *
  * @author Marc Perez (perezm68)
- * @date 11/16/2020
- * @version 1.0
+ * @author Logan Crawford (crawfl5)
+ * @date 11/22/2020
+ * @version 2.0
  */
 public class Map {
 	/**
@@ -101,6 +108,21 @@ public class Map {
 	 */
 	public void save(String theFileName) {
 		// TODO save map to file.
+		
+		// save in format (a file path will need to be reported from GUI):
+		// theM 
+		// theN
+		// myPlayerX 
+		// myPlayerY
+		// myGrid[0][0] RIGHT door state
+		// myGrid[0][0] DOWN door state
+		// myGrid[0][1] RIGHT door state
+		// myGrid[0][1] DOWN door state
+		// ...
+		// ...
+		// myGrid[theM - 1][theN - 1] RIGHT door state
+		// myGrid[theM - 1][theN - 1] DOWN door state
+		// 0
 	}
 	/**
 	 * Loads a saved map from a file of the name given.
@@ -108,6 +130,9 @@ public class Map {
 	 */
 	public void load(String theFileName) {
 		// TODO load map from file.
+		
+		// build map based on format from save(theFileName)
+		// a file path will need to be reported from GUI
 	}
 	/**
 	 * Static function to move the player token location.
@@ -126,5 +151,55 @@ public class Map {
 	public void attempt(Direction theDirection) {
 		myGrid[myPlayerX][myPlayerY].attempt(theDirection);
 		draw();
+	}
+	
+	/**
+	 * Determines if a solution to the trivia maze exists in its current state.
+	 * @return The truth value of whether or not it is possible to win.
+	 */
+	public boolean winPossible() {
+		Deque<Room> queue = new LinkedList<Room>();
+		Set<Room> set = new HashSet<Room>();
+		queue.push(myGrid[myPlayerX][myPlayerY]);
+		Room current = null;
+		int x, y;
+		do {
+			current = queue.pop();
+			set.add(current);
+			if (set.contains(myGrid[theM - 1][theN - 1]) {
+				return true;
+			}
+			x = current.getX();
+			y = current.getY();
+			if (x + 1 < theM) {
+				if (!myGrid[x + 1][y].getDoor(Direction.RIGHT).isNotLocked() && !set.contains(myGrid[x + 1][y])) {
+					queue.push(myGrid[x + 1][y]);
+				}
+			}
+			if (x - 1 >= 0) {
+				if (!myGrid[x - 1][y].getDoor(Direction.LEFT).isNotLocked() && !set.contains(myGrid[x - 1][y])) {
+					queue.push(myGrid[x - 1][y]);
+				}
+			}
+			if (y + 1 < theN) {
+				if (!myGrid[x][y + 1].getDoor(Direction.DOWN).isNotLocked() && !set.contains(myGrid[x][y + 1])) {
+					queue.push(myGrid[x][y + 1]);
+				}
+			}
+			if (y - 1 >= 0) {
+				if (!myGrid[x][y - 1].getDoor(Direction.UP).isNotLocked() && !set.contains(myGrid[x][y - 1])) {
+					queue.push(myGrid[x][y - 1]);
+				}
+			}
+		} while(!queue.isEmpty());
+		return false;
+	}
+	
+	/**
+	 * Determines if the game has been won (player has reached last room).
+	 * @return Thruth value of if the game is won.
+	 */
+	public boolean win() {
+		return myPlayerX == theM - 1 && myPlayerY == theN - 1;
 	}
 }
