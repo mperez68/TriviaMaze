@@ -1,7 +1,7 @@
 
 import java.awt.EventQueue;
 
-import map.Map;
+import map.GameMap;
 
 public class TriviaMaze {
 
@@ -9,7 +9,7 @@ public class TriviaMaze {
 		EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-        		Map m = new Map(5,5);
+        		GameMap m = new GameMap(5,5);
         		m.start();
             }
         });

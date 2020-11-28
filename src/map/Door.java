@@ -18,10 +18,12 @@ import map.Question;
  * This class defines the Door object which contains a Question object. Can be prompted to present the question and attempt
  * an answer from the player. This will open or lock the door as is appropriate.
  * 
- * @author Marc Perez (perezm68)
- * @date 11/16/2020
- * @version 1.0
+ * Version 2.0: Added method changeState(), added constructor Door(theX, theY, theAccess, theQuestion).
  *
+ * @author Marc Perez (perezm68)
+ * @author Logan Crawford (crawfl5)
+ * @date 11/27/2020
+ * @version 2.0
  */
 public class Door {
 	/**
@@ -62,6 +64,21 @@ public class Door {
 		myAccess = AccessLevel.CLOSED;
 		myQuestion = theQuestion;	
 	}
+	
+	/**
+	 * Constructor. Requires X and Y coordinates. Sets all doors automatically to predetermined access level.
+	 * @param theX Room 'X' coordinate on draw grid determined by placement on Map grid.
+	 * @param theY Room 'Y' coordinate on draw grid determined by placement on Map grid.
+	 * @param theAccess The predetermined access level.
+	 * @param theQuestion The question object that must be answered to pass this door.
+	 */
+	public Door(int theX, int theY, AccessLevel theAccess, Question theQuestion) {
+		myX = theX;
+		myY = theY;
+		myAccess = theAccess;
+		myQuestion = theQuestion;	
+	}
+	
 	/**
 	 * Redraws the door. refers to it's own location.
 	 */
@@ -69,6 +86,7 @@ public class Door {
 		theMap.addDoor(myX, myY, myWidth, myHeight);
 		System.out.printf("[" + myAccess.toString() + " Door @ (" + myX + ", " + myY + ")]");
 	}
+	
 	/**
 	 * returns true if player can pass through this door and False if it is closed or locked.
 	 * @return
@@ -80,6 +98,7 @@ public class Door {
 		}
 		return passFlag;
 	}
+	
 	/**
 	 * Getter for if the door is locked.
 	 * @return Truth value of if the door is locked.
@@ -91,6 +110,15 @@ public class Door {
 		}
 		return lockedFlag;
 	}
+	
+	/**
+	 * Setter for access level of door (open, closed, locked).
+	 * @param The new access level of the door.
+	 */
+	public void changeState(AccessLevel state) {
+		myAccess = state;
+	}
+	
 	/**
 	 * Attempt to enter the door. Prompts the player with a question.
 	 */
@@ -108,7 +136,7 @@ public class Door {
 			theQuestionButtons[0].addActionListener(new ActionListener() {	// NORTH
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
-	            	if (myQuestion.attempt(0)) {
+	            	if (myQuestion.attempt(1)) {
 						myAccess = AccessLevel.OPEN;
 						System.out.println("Correct!");
 					} else {
@@ -121,20 +149,20 @@ public class Door {
 			theQuestionButtons[1].addActionListener(new ActionListener() {	// EAST
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
-	            	if (myQuestion.attempt(1)) {
+	            	if (myQuestion.attempt(2)) {
 						myAccess = AccessLevel.OPEN;
 						System.out.println("Correct!");
 					} else {
 						myAccess = AccessLevel.LOCKED;
 						System.out.println("Wrong!");
-		            	myQuestion.drawAnswers(theQuestionButtons);
 					}
+	            	myQuestion.drawAnswers(theQuestionButtons);
 	            }
 	        });
 			theQuestionButtons[2].addActionListener(new ActionListener() {	// SOUTH
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
-	            	if (myQuestion.attempt(2)) {
+	            	if (myQuestion.attempt(3)) {
 						myAccess = AccessLevel.OPEN;
 						System.out.println("Correct!");
 					} else {
@@ -147,7 +175,7 @@ public class Door {
 			theQuestionButtons[3].addActionListener(new ActionListener() {	// WEST
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
-	            	if (myQuestion.attempt(3)) {
+	            	if (myQuestion.attempt(4)) {
 						myAccess = AccessLevel.OPEN;
 						System.out.println("Correct!");
 					} else {

@@ -58,6 +58,7 @@ public class Question {
 	 */
 	public void drawAnswers(JButton[] theQuestionButtons) {
 		for (int i = 0; i < theQuestionButtons.length; i++) {
+			theQuestionButtons[i].removeActionListener(theQuestionButtons[i].getActionListeners()[0]);
 			theQuestionButtons[i].setVisible(false);
 		}
 		System.out.println(myQuestion);
