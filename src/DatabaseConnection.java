@@ -1,7 +1,9 @@
+package sql;
 
-import java.util.ArrayList;
-import javafx.util.Pair;
+import java.util.Map;
+import java.util.HashMap;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import org.sqlite.SQLiteDataSource;
 
@@ -44,7 +46,7 @@ public class DatabaseConnection {
 												+ "PRIMARY KEY(ANSWER, QID),"
 												+ "FOREIGN KEY (QID) REFERENCES QUESTIONS(QID) );");
 												
-			// INSERT OR REPLACE questions into tables
+			// insert questions into tables
 			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 1, 'FILLER QUESTION  1');");
 			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 2, 'FILLER QUESTION  2');");
 			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 3, 'FILLER QUESTION  3');");
@@ -290,14 +292,15 @@ public class DatabaseConnection {
 		} catch (Exception e) {
 			e.printStackTrace();
             System.exit(0);
+		}
 	}
 
 	/**
 	 * Queries the database for all questions and their ID keys from Questions table in database.
 	 * @return The questions and their keys retrieved from the database.
 	 */
-	public static ArrayList<Pair<String, Integer>> getQuestions() {
-		ArrayList<Pair<String, Integer>> questions = new ArrayList<>();
+	public static Map<String, Integer> getQuestions() {
+		Map<String, Integer> questions = new HashMap<>();
 		String question;
 		int qid;
 		String query = "SELECT QUESTION, QID FROM QUESTIONS";
@@ -316,7 +319,7 @@ public class DatabaseConnection {
 			while (rs.next()) {
 				question = rs.getString("QUESTION");
 				qid = rs.getInt("QID");
-				questions.add(new Pair<String, Integer>(question, qid));
+				questions.put(question, qid);
 			}
 			
 		} catch (Exception e) {
@@ -333,8 +336,8 @@ public class DatabaseConnection {
 	 * @return A list of up to 4 tuples, representing a mapping of answer strings to their truth value of 
 	 * correctness (a 0 represents it is not the correct answer vs a 1 represents it is correct).
 	 */
-	public static ArrayList<Pair<String, Integer>> getAnswers(int theQID) {
-		ArrayList<Pair<String, Integer>> answers = new ArrayList<>();
+	public static Map<String, Integer> getAnswers(int theQID) {
+		Map<String, Integer> answers = new HashMap<>();
 		String ansString;
 		int ansInt;
 		String query = "SELECT ANSWER, CORRECT_FLAG FROM ANSWERS WHERE QID = " + theQID;
@@ -353,7 +356,7 @@ public class DatabaseConnection {
 			while (rs.next()) {
 				ansString = rs.getString("ANSWER");
 				ansInt = rs.getInt("CORRECT_FLAG");
-				answers.add(new Pair<String, Integer>(ansString, ansInt));
+				answers.put(ansString, ansInt);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
