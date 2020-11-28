@@ -7,7 +7,7 @@ package map;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Set;
-import java.util.HashSet
+import java.util.HashSet;
 
 import map.Room;
 import map.Room.Direction;
@@ -72,7 +72,7 @@ public class Map {
 			myGrid[i] = new Room[theN];
 			// generate empty rooms.
 			for (int j = 0; j < theN; j++) {
-				myGrid[i][j] = new Room(2*i,2*j);
+				myGrid[i][j] = new Room(i * 2,j * 2);
 			}
 		}
 		// Generate list of Q/A's
@@ -166,29 +166,33 @@ public class Map {
 		do {
 			current = queue.pop();
 			set.add(current);
-			if (set.contains(myGrid[theM - 1][theN - 1]) {
+			if (set.contains(myGrid[myGrid.length - 1][myGrid[0].length - 1])) {
 				return true;
 			}
-			x = current.getX();
-			y = current.getY();
-			if (x + 1 < theM) {
-				if (!myGrid[x + 1][y].getDoor(Direction.RIGHT).isNotLocked() && !set.contains(myGrid[x + 1][y])) {
+			x = current.getX() / 2;
+			y = current.getY() / 2;
+			if (x + 1 < myGrid.length) {
+				if (!myGrid[x][y].getDoor(Direction.RIGHT).isNotLocked() && !set.contains(myGrid[x + 1][y])) {
 					queue.push(myGrid[x + 1][y]);
+					set.add(myGrid[x + 1][y]);
 				}
 			}
 			if (x - 1 >= 0) {
-				if (!myGrid[x - 1][y].getDoor(Direction.LEFT).isNotLocked() && !set.contains(myGrid[x - 1][y])) {
+				if (!myGrid[x][y].getDoor(Direction.LEFT).isNotLocked() && !set.contains(myGrid[x - 1][y])) {
 					queue.push(myGrid[x - 1][y]);
+					set.add(myGrid[x - 1][y]);
 				}
 			}
-			if (y + 1 < theN) {
-				if (!myGrid[x][y + 1].getDoor(Direction.DOWN).isNotLocked() && !set.contains(myGrid[x][y + 1])) {
+			if (y + 1 < myGrid[0].length) {
+				if (!myGrid[x][y].getDoor(Direction.DOWN).isNotLocked() && !set.contains(myGrid[x][y + 1])) {
 					queue.push(myGrid[x][y + 1]);
+					set.add(myGrid[x][y + 1]);
 				}
 			}
 			if (y - 1 >= 0) {
-				if (!myGrid[x][y - 1].getDoor(Direction.UP).isNotLocked() && !set.contains(myGrid[x][y - 1])) {
+				if (!myGrid[x][y].getDoor(Direction.UP).isNotLocked() && !set.contains(myGrid[x][y - 1])) {
 					queue.push(myGrid[x][y - 1]);
+					set.add(myGrid[x][y - 1]);
 				}
 			}
 		} while(!queue.isEmpty());
@@ -197,9 +201,9 @@ public class Map {
 	
 	/**
 	 * Determines if the game has been won (player has reached last room).
-	 * @return Thruth value of if the game is won.
+	 * @return Truth value of if the game is won.
 	 */
 	public boolean win() {
-		return myPlayerX == theM - 1 && myPlayerY == theN - 1;
+		return myPlayerX == myGrid.length - 1 && myPlayerY == myGrid[0].length - 1;
 	}
 }

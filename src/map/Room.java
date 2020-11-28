@@ -16,7 +16,7 @@ import map.Door;
  * 
  * @author Marc Perez (perezm68)
  * @author Logan Crawford (crawfl5)
- * @date 11/22/2020
+ * @date 11/27/2020
  * @version 2.0
  */
 public class Room {
@@ -92,11 +92,7 @@ public class Room {
 	 * @return Returns the instance of the door. Returns null if there is no door in the specified direction.
 	 */
 	public Door getDoor(Direction theDirection) {
-		if (myAdjacentDoors[theDirection.getValue()] != null) {
-			return myAdjacentDoors[theDirection.getValue()];
-		} else {
-			return null;
-		}
+		return myAdjacentDoors[theDirection.getValue()];
 	}
 	
 	/**

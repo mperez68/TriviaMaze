@@ -16,7 +16,7 @@ import map.Question;
  *
  * @author Marc Perez (perezm68)
  * @author Logan Crawford (crawfl5)
- * @date 11/22/2020
+ * @date 11/27/2020
  * @version 2.0
  */
 public class Door {
@@ -61,7 +61,7 @@ public class Door {
 	 * @param theAccess The predetermined access level.
 	 * @param theQuestion The question object that must be answered to pass this door.
 	 */
-	public Door(int theX, int theY, AccessLevel, theAccess, Question theQuestion) {
+	public Door(int theX, int theY, AccessLevel theAccess, Question theQuestion) {
 		myX = theX;
 		myY = theY;
 		myAccess = theAccess;
