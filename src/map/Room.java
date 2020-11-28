@@ -5,6 +5,10 @@
  */
 
 package map;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 import map.Door;
 //TODO import GUI singleton
 
@@ -42,25 +46,35 @@ public class Room {
 	 * Room 'Y' coordinate on draw grid.
 	 */
 	private int myY;
+	
+	private int myWidth;
+	
+	private int myHeight;
 	/**
 	 * Constructor. Requires X and Y coordinates.
 	 * @param theX Room 'X' coordinate on draw grid determined by placement on Map grid.
 	 * @param theY Room 'Y' coordinate on draw grid determined by placement on Map grid.
 	 */
-	public Room(int theX, int theY) {
+	public Room(int theX, int theY, int theWidth, int theHeight) {
 		myX = theX;
 		myY = theY;
+		myWidth = theWidth;
+		myHeight = theHeight;
 		myAdjacentDoors = new Door[4];
 	}
 	/**
 	 * Redraws the room. refers to it's own location and calls each adjacent door, which also has it's own location.
 	 */
-	public void draw() {
-		// TODO implement as GUI draw
+	public void draw(MapPanel theMap, JPanel theQuestions) {
+		// Console Confirmation
 		System.out.print("[Room @ (" + myX + ", " + myY + ")] >> [ ");
+		// Drawing this room
+		
+		theMap.addRoom(myX + 5, myY + 5, myWidth - 10, myHeight - 10);
+		
 		for (int i = 0; i < 4; i++) {
 			if (myAdjacentDoors[i] != null){
-				myAdjacentDoors[i].draw();
+				myAdjacentDoors[i].draw(theMap, theQuestions);
 			}
 		}
 		System.out.println(" ]");
@@ -87,7 +101,7 @@ public class Room {
 	 * Attempt to enter the room in the direction given.
 	 * @param theDirection UP, DOWN, LEFT, or RIGHT; determines direction player travels.
 	 */
-	public void attempt(Direction theDirection) {
-		myAdjacentDoors[theDirection.getValue()].attempt();
+	public void attempt(Direction theDirection, JButton[] theQuestionButtons) {
+		myAdjacentDoors[theDirection.getValue()].attempt(theQuestionButtons);
 	}
 }
