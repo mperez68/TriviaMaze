@@ -10,11 +10,14 @@ The Java Application was started with no real complete elements. Iteration 2 wil
 
 ITERATION 2
 
-In iteration 2 we began proceeding in accordance to the original design plan. In the development process we began to encounter difficulties adhering to our initial set of requirements and began to rework our specifications to match a more feasible design schema. Updates to the UML and SRS are in order and the commits made to the repository reflect the new design which will be fairly simpler. The changes and communication between group members in this iteration has made the goals and outlines for the project much more definitive.
+In iteration 2 we began proceeding in accordance to the original design plan. In the development process we began to encounter difficulties adhering to our initial set of requirements and began to rework our
+specifications to match a more feasible design schema. Updates to the UML and SRS are in order and the commits made to the repository reflect the new design which will be fairly simpler. The changes and communication
+between group members in this iteration has made the goals and outlines for the project much more definitive.
 
 ITERATION 3
 
-Redesigns have been complete and we were able to work on the database. The GUI is loosely operational and we expect the project to be finished next week. Most significantly, with the GUI present we are able to officially begin checking off user stories.
+Redesigns have been complete and we were able to work on the database. The GUI is loosely operational and we expect the project to be finished next week. Most significantly, with the GUI present we are able to
+officially begin checking off user stories.
 
  - Logan Crawford, Marc Perez, Robbie Talbot
  (Crawfl5, perezm68, Robbie00)
