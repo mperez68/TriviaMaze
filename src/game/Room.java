@@ -4,13 +4,12 @@
  * TCSS 360 - Fall 2020 Project
  */
 
-package map;
+package game;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import map.Door;
-//TODO import GUI singleton
+import game.Door;
 
 /**
  * The Room Object. This will contain Door objects that contain Question objects that can be called to determine map
@@ -128,8 +127,9 @@ public class Room {
 	/**
 	 * Attempt to enter the room in the direction given.
 	 * @param theDirection UP, DOWN, LEFT, or RIGHT; determines direction player travels.
+	 * @param theMapPanel 
 	 */
-	public void attempt(Direction theDirection, JButton[] theQuestionButtons) {
-		myAdjacentDoors[theDirection.getValue()].attempt(theQuestionButtons);
+	public void attempt(Direction theDirection, JButton[] theQuestionButtons, MapPanel theMapPanel) {
+		myAdjacentDoors[theDirection.getValue()].attempt(theQuestionButtons, theMapPanel);
 	}
 }

@@ -4,15 +4,14 @@
  * TCSS 360 - Fall 2020 Project
  */
 
-package map;
+package game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import map.Question;
-//TODO import GUI singleton
+import game.Question;
 
 /**
  * This class defines the Door object which contains a Question object. Can be prompted to present the question and attempt
@@ -72,9 +71,11 @@ public class Door {
 	 * @param theAccess The predetermined access level.
 	 * @param theQuestion The question object that must be answered to pass this door.
 	 */
-	public Door(int theX, int theY, AccessLevel theAccess, Question theQuestion) {
+	public Door(int theX, int theY, int theWidth, int theHeight, AccessLevel theAccess, Question theQuestion) {
 		myX = theX;
 		myY = theY;
+		myWidth = theWidth;
+		myHeight = theHeight;
 		myAccess = theAccess;
 		myQuestion = theQuestion;	
 	}
@@ -121,8 +122,9 @@ public class Door {
 	
 	/**
 	 * Attempt to enter the door. Prompts the player with a question.
+	 * @param theMapPanel 
 	 */
-	public void attempt(JButton[] theQuestionButtons) {
+	public void attempt(JButton[] theQuestionButtons, MapPanel theMapPanel) {
 		
 		if (myAccess.equals(AccessLevel.LOCKED)) {
 			System.out.println("Door Locked!");
@@ -133,56 +135,72 @@ public class Door {
 				theQuestionButtons[i].setVisible(true);
 			}
 			// Assign
-			theQuestionButtons[0].addActionListener(new ActionListener() {	// NORTH
+			theQuestionButtons[0].addActionListener(new ActionListener() {	// ANS 1
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
 	            	if (myQuestion.attempt(1)) {
 						myAccess = AccessLevel.OPEN;
+						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Correct!");
 					} else {
 						myAccess = AccessLevel.LOCKED;
+						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
+						// TODO check winPossible()
 					}
 	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	theMapPanel.repaint();
 	            }
 	        });
-			theQuestionButtons[1].addActionListener(new ActionListener() {	// EAST
+			theQuestionButtons[1].addActionListener(new ActionListener() {	// ANS 2
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
 	            	if (myQuestion.attempt(2)) {
 						myAccess = AccessLevel.OPEN;
+						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Correct!");
 					} else {
 						myAccess = AccessLevel.LOCKED;
+						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
+						// TODO check winPossible()
 					}
 	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	theMapPanel.repaint();
 	            }
 	        });
-			theQuestionButtons[2].addActionListener(new ActionListener() {	// SOUTH
+			theQuestionButtons[2].addActionListener(new ActionListener() {	// ANS 3
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
 	            	if (myQuestion.attempt(3)) {
 						myAccess = AccessLevel.OPEN;
+						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Correct!");
 					} else {
 						myAccess = AccessLevel.LOCKED;
+						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
+						// TODO check winPossible()
 					}
 	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	theMapPanel.repaint();
 	            }
 	        });
-			theQuestionButtons[3].addActionListener(new ActionListener() {	// WEST
+			theQuestionButtons[3].addActionListener(new ActionListener() {	// ANS 4
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
 	            	if (myQuestion.attempt(4)) {
 						myAccess = AccessLevel.OPEN;
+						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Correct!");
 					} else {
 						myAccess = AccessLevel.LOCKED;
+						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
+						// TODO check winPossible()
 					}
 	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	theMapPanel.repaint();
 	            }
 	        });
 			
