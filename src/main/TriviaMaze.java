@@ -11,7 +11,7 @@ public class TriviaMaze {
 	 * @param theArgs System parameters.
 	 */
 	public static void main(String[] theArgs) {
-		GameMap m = new GameMap(2,2);
+		GameMap m = new GameMap(5,5);
 		
 		EventQueue.invokeLater(new Runnable() {
             @Override
