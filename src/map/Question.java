@@ -7,6 +7,9 @@
 package map;
 // TODO import GUI singleton
 
+import javax.swing.JButton;
+import java.io.*;
+
 /**
  * This class defines the Question object. The Question object is intended to contain the question and answer data
  * in the form of a question, a list of possible answers, and an indicator of the correct answer. It assumes an ability
@@ -16,7 +19,11 @@ package map;
  * @date 11/16/2020
  * @version 1.0
  */
-public class Question {
+public class Question implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1425506397592762851L;
 	/**
 	 * Container for the question text.
 	 */
@@ -52,9 +59,13 @@ public class Question {
 	}
 	/**
 	 * Draws the contained data to the viewport as an answer confirmation.
+	 * @param theQuestionButtons 
 	 */
-	public void drawAnswers() {
-		// TODO temporary console printing. Replace with GUI implementation.
+	public void drawAnswers(JButton[] theQuestionButtons) {
+		for (int i = 0; i < theQuestionButtons.length; i++) {
+			theQuestionButtons[i].removeActionListener(theQuestionButtons[i].getActionListeners()[0]);
+			theQuestionButtons[i].setVisible(false);
+		}
 		System.out.println(myQuestion);
 		for (int i = 0; i < myAnswers.length; i++) {
 			if (i == myCorrect) {

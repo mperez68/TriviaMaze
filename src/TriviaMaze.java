@@ -1,15 +1,16 @@
-import map.Map;
-import map.Room.Direction;
+import java.awt.EventQueue;
+
+import map.GameMap;
 
 public class TriviaMaze {
 
 	public static void main(String[] theArgs) {
-		Map m = new Map(3,3);
-		//System.out.println(m.winPossible());
-		m.attempt(Direction.RIGHT);
-		m.attempt(Direction.RIGHT);
-		Map.moveToken(2, 2);
-		//System.out.println(m.winPossible());
-		m.attempt(Direction.UP);
+		EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+        		GameMap m = new GameMap(5,5);
+        		m.start();
+            }
+        });
 	}
 }

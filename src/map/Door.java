@@ -5,7 +5,14 @@
  */
 
 package map;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 import map.Question;
+import java.io.*;
 //TODO import GUI singleton
 
 /**
@@ -19,7 +26,12 @@ import map.Question;
  * @date 11/27/2020
  * @version 2.0
  */
-public class Door {
+public class Door implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3254879297132631859L;
+
 	/**
 	 * Enumerated constants to ensure input is always valid.
 	 */
@@ -41,15 +53,20 @@ public class Door {
 	 */
 	private int myY;
 	
+	private int myWidth;
+	
+	private int myHeight;
 	/**
 	 * Constructor. Requires X and Y coordinates. Sets all doors automatically to closed.
 	 * @param theX Room 'X' coordinate on draw grid determined by placement on Map grid.
 	 * @param theY Room 'Y' coordinate on draw grid determined by placement on Map grid.
 	 * @param theQuestion The question object that must be answered to pass this door.
 	 */
-	public Door(int theX, int theY, Question theQuestion) {
+	public Door(int theX, int theY, int theWidth, int theHeight, Question theQuestion) {
 		myX = theX;
 		myY = theY;
+		myWidth = theWidth;
+		myHeight = theHeight;
 		myAccess = AccessLevel.CLOSED;
 		myQuestion = theQuestion;	
 	}
@@ -71,8 +88,8 @@ public class Door {
 	/**
 	 * Redraws the door. refers to it's own location.
 	 */
-	public void draw() {
-		// TODO implement as GUI draw
+	public void draw(MapPanel theMap, JPanel theQuestions) {
+		theMap.addDoor(myX, myY, myWidth, myHeight);
 		System.out.printf("[" + myAccess.toString() + " Door @ (" + myX + ", " + myY + ")]");
 	}
 	
@@ -111,21 +128,70 @@ public class Door {
 	/**
 	 * Attempt to enter the door. Prompts the player with a question.
 	 */
-	public void attempt() {
+	public void attempt(JButton[] theQuestionButtons) {
+		
 		if (myAccess.equals(AccessLevel.LOCKED)) {
 			System.out.println("Door Locked!");
 		} else {
 			myQuestion.draw();
-			// TODO handle as setting listener
-			int input = (int)(Math.random() * 4);
-			if (myQuestion.attempt(input)) {
-				myAccess = AccessLevel.OPEN;
-				System.out.println("Correct!");
-			} else {
-				myAccess = AccessLevel.LOCKED;
-				System.out.println("Wrong!");
+			// Light up buttons
+			for (int i = 0; i < theQuestionButtons.length; i++) {
+				theQuestionButtons[i].setVisible(true);
 			}
-			myQuestion.drawAnswers();
+			// Assign
+			theQuestionButtons[0].addActionListener(new ActionListener() {	// NORTH
+	            @Override
+	            public void actionPerformed(final ActionEvent theEvent) {
+	            	if (myQuestion.attempt(1)) {
+						myAccess = AccessLevel.OPEN;
+						System.out.println("Correct!");
+					} else {
+						myAccess = AccessLevel.LOCKED;
+						System.out.println("Wrong!");
+					}
+	            	myQuestion.drawAnswers(theQuestionButtons);
+	            }
+	        });
+			theQuestionButtons[1].addActionListener(new ActionListener() {	// EAST
+	            @Override
+	            public void actionPerformed(final ActionEvent theEvent) {
+	            	if (myQuestion.attempt(2)) {
+						myAccess = AccessLevel.OPEN;
+						System.out.println("Correct!");
+					} else {
+						myAccess = AccessLevel.LOCKED;
+						System.out.println("Wrong!");
+					}
+	            	myQuestion.drawAnswers(theQuestionButtons);
+	            }
+	        });
+			theQuestionButtons[2].addActionListener(new ActionListener() {	// SOUTH
+	            @Override
+	            public void actionPerformed(final ActionEvent theEvent) {
+	            	if (myQuestion.attempt(3)) {
+						myAccess = AccessLevel.OPEN;
+						System.out.println("Correct!");
+					} else {
+						myAccess = AccessLevel.LOCKED;
+						System.out.println("Wrong!");
+					}
+	            	myQuestion.drawAnswers(theQuestionButtons);
+	            }
+	        });
+			theQuestionButtons[3].addActionListener(new ActionListener() {	// WEST
+	            @Override
+	            public void actionPerformed(final ActionEvent theEvent) {
+	            	if (myQuestion.attempt(4)) {
+						myAccess = AccessLevel.OPEN;
+						System.out.println("Correct!");
+					} else {
+						myAccess = AccessLevel.LOCKED;
+						System.out.println("Wrong!");
+					}
+	            	myQuestion.drawAnswers(theQuestionButtons);
+	            }
+	        });
+			
 		}
 	}
 }
