@@ -128,7 +128,7 @@ public class MapPanel extends JPanel {
     	myDoors.clear();
     	myOpenSymbols.clear();
     	myLockedSymbols.clear();
-    	myPlayerToken = null;
+    	myPlayerToken = new Rectangle(0,0,2,2);	// "empty" character token
     	repaint();
     }
     

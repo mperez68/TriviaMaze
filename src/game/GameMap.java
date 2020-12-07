@@ -198,7 +198,7 @@ public class GameMap{
 			
 			// Question Buttons -> Question Panel
 			myQuestionButtons[i].setLayout(null);
-			myQuestionButtons[i].setBounds(50, 300 + (i * 100), 50, 50);
+			myQuestionButtons[i].setBounds(50, 300 + (i * 100), 50, 50);	// TODO fix magic numbers
 			myQuestionButtons[i].setVisible(false);
 			myQuestionPanel.add(myQuestionButtons[i]);
 		}
@@ -222,6 +222,35 @@ public class GameMap{
 					myPlayerTokenWidth, myPlayerTokenWidth);
 		}
 		
+		// Assign Dropdown Buttons
+		myMenuButtons[0].addActionListener(new ActionListener() {	// NEW GAME
+            @Override
+            public void actionPerformed(final ActionEvent theEvent) {
+            	reset();
+            }
+        });
+
+		myMenuButtons[1].addActionListener(new ActionListener() {	// SAVE
+            @Override
+            public void actionPerformed(final ActionEvent theEvent) {
+            	save("game.txt");
+            }
+        });
+
+		myMenuButtons[2].addActionListener(new ActionListener() {	// LOAD
+            @Override
+            public void actionPerformed(final ActionEvent theEvent) {
+            	load("game.txt");
+            }
+        });
+
+		myMenuButtons[3].addActionListener(new ActionListener() {	// EXIT
+            @Override
+            public void actionPerformed(final ActionEvent theEvent) {
+            	myFrame.dispose();
+            }
+        });
+		
 		// Assign Directional Buttons
 		myDirectionalButtons[0].addActionListener(new ActionListener() {	//NORTH
             @Override
@@ -231,9 +260,8 @@ public class GameMap{
             			moveToken(myGridLocation.x, myGridLocation.y - 1);
             			myMapPanel.repaint();
             			if (win()) {
-            				// TODO reset game
-            				myMapPanel.clear();
                     		System.out.println("YOU WIN!");
+            				reset();
             			}
             			
             		} else {
@@ -254,9 +282,8 @@ public class GameMap{
             			moveToken(myGridLocation.x + 1, myGridLocation.y);
             			myMapPanel.repaint();
             			if (win()) {
-            				// TODO reset game
-            				myMapPanel.clear();
                     		System.out.println("YOU WIN!");
+            				reset();
             			}
             		} else {
             			myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.RIGHT, myQuestionButtons, myMapPanel);
@@ -276,9 +303,8 @@ public class GameMap{
             			moveToken(myGridLocation.x, myGridLocation.y + 1);
             			myMapPanel.repaint();
             			if (win()) {
-            				// TODO reset game
-            				myMapPanel.clear();
                     		System.out.println("YOU WIN!");
+            				reset();
             			}
             		} else {
                 		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.DOWN, myQuestionButtons, myMapPanel);
@@ -298,9 +324,8 @@ public class GameMap{
             			moveToken(myGridLocation.x - 1, myGridLocation.y);
             			myMapPanel.repaint();
             			if (win()) {
-            				// TODO reset game
-            				myMapPanel.clear();
                     		System.out.println("YOU WIN!");
+            				reset();
             			}
             		} else {
                 		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.LEFT, myQuestionButtons, myMapPanel);
@@ -323,6 +348,34 @@ public class GameMap{
 		myFrame.repaint();
 	}
 	/**
+	 * resets the game map.
+	 */
+	private void reset() {
+		myMapPanel.clear();
+    	for (int i = 0; i < myDirectionalButtons.length; i++) {
+    		myDirectionalButtons[i].removeActionListener(myDirectionalButtons[i].getActionListeners()[0]);
+		}
+    	generate(myGridWidth,myGridHeight);
+    	myMapPanel.repaint();
+		
+	}
+	/**
+	 * resets the game map with new dimensions.
+	 * @param theM new grid width.
+	 * @param theN new grid height.
+	 */
+	private void reset(int theM, int theN) {
+		myMapPanel.clear();
+    	for (int i = 0; i < myDirectionalButtons.length; i++) {
+    		myDirectionalButtons[i].removeActionListener(myDirectionalButtons[i].getActionListeners()[0]);
+		}
+    	myGridWidth = theM;
+    	myGridHeight = theN;
+    	generate(myGridWidth,myGridHeight);
+    	myMapPanel.repaint();
+		
+	}
+	/**
 	 * Generates a new map of size M x N. If a map currently exists, it deletes it before creating a new one.
 	 * @param theM Width of new map.
 	 * @param theN Height of new map.
@@ -330,7 +383,7 @@ public class GameMap{
 	private void generate(int theM, int theN) {
 		// If map is already populated, delete current map contents.
 		if (myGrid != null) {
-			for (int i = 0; i < theM; i++) {
+			for (int i = 0; i < myGrid.length; i++) {
 				myGrid[i] = null;
 			}
 			myGrid = null;
@@ -428,6 +481,7 @@ public class GameMap{
 	 * Saves current map player location, rooms, doors, and questions to a text file.
 	 */
 	public void save(String theFileName) {
+		System.out.println("Saving as \"" + theFileName + "\"...");
 		// TODO save map to file.
 		
 		// save in format (a file path will need to be reported from GUI):
@@ -450,6 +504,7 @@ public class GameMap{
 	 * @param theFileName FULL file name with extension of the file to load from.
 	 */
 	public void load(String theFileName) {
+		System.out.println("Loading from \"" + theFileName + "\"...");
 		// TODO load map from file.
 		
 		// build map based on format from save(theFileName)
