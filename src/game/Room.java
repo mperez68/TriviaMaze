@@ -6,7 +6,10 @@
 
 package game;
 
+import java.awt.Point;
+
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import game.Door;
@@ -41,23 +44,31 @@ public class Room {
 	 */
 	Door myAdjacentDoors[];
 	/**
-	 * Room 'X' coordinate on draw grid.
+	 * Room 'X' coordinate on panel.
 	 */
 	private int myX;
 	/**
-	 * Room 'Y' coordinate on draw grid.
+	 * Room 'Y' coordinate on panel.
 	 */
 	private int myY;
-	
+	/**
+	 * Width in pixels of this room.
+	 */
 	private int myWidth;
-	
+	/**
+	 * Height in pixels of this room.
+	 */
 	private int myHeight;
+	
+	private Point myGridLocation;
 	/**
 	 * Constructor. Requires X and Y coordinates.
-	 * @param theX Room 'X' coordinate on draw grid determined by placement on Map grid.
-	 * @param theY Room 'Y' coordinate on draw grid determined by placement on Map grid.
+	 * @param theX X for the Point of Interest on the map panel.
+	 * @param theY Y for the Point of Interest on the map panel.
+	 * @param theGridLocation Grid location of this room.
 	 */
-	public Room(int theX, int theY, int theWidth, int theHeight) {
+	public Room(int theX, int theY, int theWidth, int theHeight, Point theGridLocation) {
+		myGridLocation = theGridLocation;
 		myX = theX;
 		myY = theY;
 		myWidth = theWidth;
@@ -113,7 +124,7 @@ public class Room {
 	 * @return x-coordinate value.
 	 */
 	public int getX() {
-		return myX;
+		return myGridLocation.x;
 	}
 	
 	/**
@@ -121,15 +132,19 @@ public class Room {
 	 * @return y-coordinate value.
 	 */
 	public int getY() {
-		return myY;
+		return myGridLocation.y;
 	}
 	
 	/**
 	 * Attempt to enter the room in the direction given.
 	 * @param theDirection UP, DOWN, LEFT, or RIGHT; determines direction player travels.
+	 * @param theAnswerLabels 
+	 * @param theQuestionLabel 
 	 * @param theMapPanel 
 	 */
-	public void attempt(Direction theDirection, JButton[] theQuestionButtons, MapPanel theMapPanel) {
-		myAdjacentDoors[theDirection.getValue()].attempt(theQuestionButtons, theMapPanel);
+	public void attempt(Direction theDirection, JButton[] theQuestionButtons, JLabel theQuestionLabel, JLabel[] theAnswerLabels,
+			MapPanel theMapPanel, GameMap theGameMap) {
+		myAdjacentDoors[theDirection.getValue()].attempt(theQuestionButtons, theQuestionLabel,
+				theAnswerLabels, theMapPanel, theGameMap);
 	}
 }

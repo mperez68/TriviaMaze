@@ -1,7 +1,7 @@
 /*
  * Map.java
  *
- * TCSS 360 - Fall myDoorDepthmyDoorDepth Project
+ * TCSS 360 - Fall Project
  */
 package game;
 import java.awt.BorderLayout;
@@ -73,6 +73,18 @@ public class GameMap{
 	 */
 	private static final Point DIRECTIONAL_BAR_POI = new Point ((MAP_PANEL_WIDTH / 2) - (DIRECTION_BAR_WIDTH / 2), PANEL_HEIGHT - DIRECTION_BAR_HEIGHT);
 	/**
+	 * Spacing between question buttons.
+	 */
+	private static final int QUESTION_BUTTON_SPACING = PANEL_HEIGHT / 8;
+	/**
+	 * Width of the square Question Buttons.
+	 */
+	private static final int QUESTION_BUTTON_WIDTH = 2 * (QUESTION_BUTTON_SPACING / 3);
+	/**
+	 * Directional button box "Point of Interest", or upper left point.
+	 */
+	private static final Point QUESTION_BAR_POI = new Point (10, (PANEL_HEIGHT / 2));
+	/**
 	 * Width in pixels of a room as drawn in the GUI.
 	 */
 	private int myRoomTokenWidth;
@@ -113,12 +125,22 @@ public class GameMap{
 	 * Array of Question Button Objects. Assigns a button for question option. Assigned to the Question Panel.
 	 */
 	private final JButton[] myQuestionButtons = {new JButton("1)"), new JButton("2)"), new JButton("3)"), new JButton("4)")};
-	// TODO labels for question output (5)
+	/**
+	 * Text box for the trivia question.
+	 */
+	private final JLabel myQuestionLabel = new JLabel("Question");
+	/**
+	 * Text boxes for the trivia question answers.
+	 */
+	private final JLabel myAnswerLabels[] = {new JLabel("1)", JLabel.CENTER), new JLabel("2)", JLabel.CENTER),
+			new JLabel("3)", JLabel.CENTER), new JLabel("4)", JLabel.CENTER)};
 	/**
 	 * Array of drop down button objects. Assigned to the JMenu object.
 	 */
 	private final JMenuItem[] myMenuButtons = {new JMenuItem("New Game"), new JMenuItem("Save..."),
 			new JMenuItem("Load..."), new JMenuItem("Exit")};
+	
+	//private AbstractAction myAction;
 	
 					// --------------- Map Variables --------------- //
 	/**
@@ -184,7 +206,16 @@ public class GameMap{
 		myDirectionalButtons[2].setBounds(DIRECTIONAL_BAR_POI.x + DIRECTION_BAR_WIDTH / 4, DIRECTIONAL_BAR_POI.y + DIRECTION_BAR_HEIGHT * 2 / 3,
 				DIRECTION_BAR_WIDTH / 2, DIRECTION_BAR_HEIGHT / 3);
 		
-		// Assign buttons to layouts
+		// Assign Bounds of question label
+		myQuestionLabel.setBounds(PANEL_BORDER, PANEL_BORDER,
+				QUESTION_PANEL_WIDTH - (2 * PANEL_BORDER), (PANEL_HEIGHT / 2) - PANEL_BORDER);
+		myQuestionLabel.setLayout(null);
+		myQuestionLabel.setHorizontalAlignment(JLabel.CENTER);
+		myQuestionLabel.setVerticalAlignment(JLabel.CENTER);
+		myQuestionLabel.setVisible(false);
+		myQuestionPanel.add(myQuestionLabel);
+		
+		// Assign buttons and labels to layouts
 		for (int i = 0; i < 4; i++) {
 			// Menu Buttons -> Menu Bar
 			myMenu.add(myMenuButtons[i]);
@@ -197,10 +228,19 @@ public class GameMap{
 			myMapPanel.add(myDirectionalButtons[i]);
 			
 			// Question Buttons -> Question Panel
+			myQuestionButtons[i].setBounds(QUESTION_BAR_POI.x, QUESTION_BAR_POI.y + (i * QUESTION_BUTTON_SPACING),
+					QUESTION_BUTTON_WIDTH, QUESTION_BUTTON_WIDTH);
 			myQuestionButtons[i].setLayout(null);
-			myQuestionButtons[i].setBounds(50, 300 + (i * 100), 50, 50);	// TODO fix magic numbers
 			myQuestionButtons[i].setVisible(false);
 			myQuestionPanel.add(myQuestionButtons[i]);
+			
+			// Question Label -> Question Panel
+			myAnswerLabels[i].setBounds((2 * PANEL_BORDER) + QUESTION_BUTTON_WIDTH, (PANEL_HEIGHT / 2) + (i * QUESTION_BUTTON_SPACING) + PANEL_BORDER,
+					QUESTION_PANEL_WIDTH - (2 * PANEL_BORDER) - QUESTION_BUTTON_WIDTH, QUESTION_BUTTON_SPACING);
+			myAnswerLabels[i].setLayout(null);
+			myAnswerLabels[i].setVerticalAlignment(JLabel.TOP);
+			myAnswerLabels[i].setVisible(false);
+			myQuestionPanel.add(myAnswerLabels[i]);
 		}
 
 		// Draw window to screen
@@ -250,7 +290,7 @@ public class GameMap{
             	myFrame.dispose();
             }
         });
-		
+		final GameMap thisMap = this;
 		// Assign Directional Buttons
 		myDirectionalButtons[0].addActionListener(new ActionListener() {	//NORTH
             @Override
@@ -261,11 +301,13 @@ public class GameMap{
             			myMapPanel.repaint();
             			if (win()) {
                     		System.out.println("YOU WIN!");
+                    		JOptionPane.showMessageDialog(null, "YOU WIN!");
             				reset();
             			}
             			
             		} else {
-	            		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.UP, myQuestionButtons, myMapPanel);
+	            		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.UP, myQuestionButtons, myQuestionLabel,
+	            				myAnswerLabels, myMapPanel, thisMap);
 	                    System.out.println(Direction.UP.toString() + " is " + myGrid[myGridLocation.x][myGridLocation.y].isNotLocked((Direction.UP)));
             		}
             	} else {
@@ -283,10 +325,12 @@ public class GameMap{
             			myMapPanel.repaint();
             			if (win()) {
                     		System.out.println("YOU WIN!");
+                    		JOptionPane.showMessageDialog(null, "YOU WIN!");
             				reset();
             			}
             		} else {
-            			myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.RIGHT, myQuestionButtons, myMapPanel);
+            			myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.RIGHT, myQuestionButtons, myQuestionLabel, 
+	            				myAnswerLabels, myMapPanel, thisMap);
             			System.out.println(Direction.RIGHT.toString() + " is " + myGrid[myGridLocation.x][myGridLocation.y].isNotLocked(Direction.RIGHT));
             		}
             	} else {
@@ -304,10 +348,12 @@ public class GameMap{
             			myMapPanel.repaint();
             			if (win()) {
                     		System.out.println("YOU WIN!");
+                    		JOptionPane.showMessageDialog(null, "YOU WIN!");
             				reset();
             			}
             		} else {
-                		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.DOWN, myQuestionButtons, myMapPanel);
+                		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.DOWN, myQuestionButtons, myQuestionLabel, 
+	            				myAnswerLabels, myMapPanel, thisMap);
                         System.out.println(Direction.DOWN.toString() + " is " + myGrid[myGridLocation.x][myGridLocation.y].isNotLocked(Direction.DOWN));
             		}
             	} else {
@@ -325,10 +371,12 @@ public class GameMap{
             			myMapPanel.repaint();
             			if (win()) {
                     		System.out.println("YOU WIN!");
+                    		JOptionPane.showMessageDialog(null, "YOU WIN!");
             				reset();
             			}
             		} else {
-                		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.LEFT, myQuestionButtons, myMapPanel);
+                		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.LEFT, myQuestionButtons, myQuestionLabel, 
+	            				myAnswerLabels, myMapPanel, thisMap);
                         System.out.println(Direction.LEFT.toString() + " is " + myGrid[myGridLocation.x][myGridLocation.y].isNotLocked(Direction.LEFT));
             		}
             	} else {
@@ -350,7 +398,11 @@ public class GameMap{
 	/**
 	 * resets the game map.
 	 */
-	private void reset() {
+	void reset() {
+		myQuestionLabel.setVisible(false);
+		for (int i = 0; i < myAnswerLabels.length; i++) {
+			myAnswerLabels[i].setVisible(false);
+		}
 		myMapPanel.clear();
     	for (int i = 0; i < myDirectionalButtons.length; i++) {
     		myDirectionalButtons[i].removeActionListener(myDirectionalButtons[i].getActionListeners()[0]);
@@ -364,17 +416,17 @@ public class GameMap{
 	 * @param theM new grid width.
 	 * @param theN new grid height.
 	 */
-	private void reset(int theM, int theN) {
-		myMapPanel.clear();
-    	for (int i = 0; i < myDirectionalButtons.length; i++) {
-    		myDirectionalButtons[i].removeActionListener(myDirectionalButtons[i].getActionListeners()[0]);
-		}
-    	myGridWidth = theM;
-    	myGridHeight = theN;
-    	generate(myGridWidth,myGridHeight);
-    	myMapPanel.repaint();
-		
-	}
+//	private void reset(int theM, int theN) {
+//		myMapPanel.clear();
+//    	for (int i = 0; i < myDirectionalButtons.length; i++) {
+//    		myDirectionalButtons[i].removeActionListener(myDirectionalButtons[i].getActionListeners()[0]);
+//		}
+//    	myGridWidth = theM;
+//    	myGridHeight = theN;
+//    	generate(myGridWidth,myGridHeight);
+//    	myMapPanel.repaint();
+//		
+//	}
 	/**
 	 * Generates a new map of size M x N. If a map currently exists, it deletes it before creating a new one.
 	 * @param theM Width of new map.
@@ -401,7 +453,8 @@ public class GameMap{
 		for (int i = 0; i < theM; i++) {
 			myGrid[i] = new Room[theN];
 			for (int j = 0; j < theN; j++) {
-				myGrid[i][j] = new Room(myRoomTokenWidth*i,myRoomTokenHeight*j, myRoomTokenWidth, myRoomTokenHeight);	// generate unlinked rooms.
+				myGrid[i][j] = new Room(myRoomTokenWidth*i,myRoomTokenHeight*j, // generate unlinked rooms.
+						myRoomTokenWidth, myRoomTokenHeight, new Point(i,j));	
 			}
 		}
 		
@@ -528,7 +581,7 @@ public class GameMap{
 	 * @param theDirection UP, DOWN, LEFT, or RIGHT; determines direction player travels.
 	 */
 	public void attempt(Direction theDirection) {
-		myGrid[myGridLocation.x][myGridLocation.y].attempt(theDirection, myQuestionButtons, myMapPanel);
+		myGrid[myGridLocation.x][myGridLocation.y].attempt(theDirection, myQuestionButtons, myQuestionLabel, myAnswerLabels, myMapPanel, this);
 		draw();
 	}
 	
@@ -548,8 +601,8 @@ public class GameMap{
 			if (set.contains(myGrid[myGrid.length - 1][myGrid[0].length - 1])) {
 				return true;
 			}
-			x = current.getX() / 2;
-			y = current.getY() / 2;
+			x = current.getX();
+			y = current.getY();
 			if (x + 1 < myGrid.length) {
 				if (!myGrid[x][y].getDoor(Direction.RIGHT).isNotLocked() && !set.contains(myGrid[x + 1][y])) {
 					queue.push(myGrid[x + 1][y]);

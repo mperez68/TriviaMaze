@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import game.Question;
@@ -122,14 +124,16 @@ public class Door {
 	
 	/**
 	 * Attempt to enter the door. Prompts the player with a question.
+	 * @param theAnswerLabels 
+	 * @param theQuestionLabel 
 	 * @param theMapPanel 
 	 */
-	public void attempt(JButton[] theQuestionButtons, MapPanel theMapPanel) {
+	public void attempt(JButton[] theQuestionButtons, JLabel theQuestionLabel, JLabel[] theAnswerLabels, MapPanel theMapPanel, GameMap theGameMap) {
 		
 		if (myAccess.equals(AccessLevel.LOCKED)) {
 			System.out.println("Door Locked!");
 		} else {
-			myQuestion.draw();
+			myQuestion.draw(theQuestionLabel, theAnswerLabels);
 			// Light up buttons
 			for (int i = 0; i < theQuestionButtons.length; i++) {
 				theQuestionButtons[i].setVisible(true);
@@ -146,9 +150,14 @@ public class Door {
 						myAccess = AccessLevel.LOCKED;
 						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
-						// TODO check winPossible()
+						if (!theGameMap.winPossible()) {
+							theMapPanel.repaint();
+                    		System.out.println("YOU LOSE!");
+                    		JOptionPane.showMessageDialog(null, "YOU LOSE!");
+                    		theGameMap.reset();
+						}
 					}
-	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	myQuestion.drawAnswers(theQuestionButtons, theQuestionLabel, theAnswerLabels);
 	            	theMapPanel.repaint();
 	            }
 	        });
@@ -163,9 +172,14 @@ public class Door {
 						myAccess = AccessLevel.LOCKED;
 						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
-						// TODO check winPossible()
+						if (!theGameMap.winPossible()) {
+							theMapPanel.repaint();
+                    		System.out.println("YOU LOSE!");
+                    		JOptionPane.showMessageDialog(null, "YOU LOSE!");
+                    		theGameMap.reset();
+						}
 					}
-	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	myQuestion.drawAnswers(theQuestionButtons, theQuestionLabel, theAnswerLabels);
 	            	theMapPanel.repaint();
 	            }
 	        });
@@ -180,9 +194,14 @@ public class Door {
 						myAccess = AccessLevel.LOCKED;
 						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
-						// TODO check winPossible()
+						if (!theGameMap.winPossible()) {
+							theMapPanel.repaint();
+                    		System.out.println("YOU LOSE!");
+                    		JOptionPane.showMessageDialog(null, "YOU LOSE!");
+                    		theGameMap.reset();
+						}
 					}
-	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	myQuestion.drawAnswers(theQuestionButtons, theQuestionLabel, theAnswerLabels);
 	            	theMapPanel.repaint();
 	            }
 	        });
@@ -197,9 +216,14 @@ public class Door {
 						myAccess = AccessLevel.LOCKED;
 						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
-						// TODO check winPossible()
+						if (!theGameMap.winPossible()) {
+							theMapPanel.repaint();
+                    		System.out.println("YOU LOSE!");
+                    		JOptionPane.showMessageDialog(null, "YOU LOSE!");
+                    		theGameMap.reset();
+						}
 					}
-	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	myQuestion.drawAnswers(theQuestionButtons, theQuestionLabel, theAnswerLabels);
 	            	theMapPanel.repaint();
 	            }
 	        });

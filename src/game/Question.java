@@ -8,6 +8,7 @@ package game;
 // TODO import GUI singleton
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  * This class defines the Question object. The Question object is intended to contain the question and answer data
@@ -44,33 +45,42 @@ public class Question {
 	}
 	/**
 	 * Draws the contained data to the viewport as a question prompt.
+	 * @param theAnswerLabels 
+	 * @param theQuestionLabel 
 	 */
-	public void draw() {
-		// TODO temporary console printing. Replace with GUI implementation.
+	public void draw(JLabel theQuestionLabel, JLabel[] theAnswerLabels) {
 		System.out.println(myQuestion);
+		theQuestionLabel.setText(myQuestion);
+		theQuestionLabel.setVisible(true);
+		
 		for (int i = 0; i < myAnswers.length; i++) {
 			System.out.println(Integer.toString(i+1) + ") " + myAnswers[i]);
+			theAnswerLabels[i].setText(myAnswers[i]);
+			theAnswerLabels[i].setVisible(true);
 		}
 	}
 	/**
 	 * Draws the contained data to the viewport as an answer confirmation.
 	 * @param theQuestionButtons 
 	 */
-	public void drawAnswers(JButton[] theQuestionButtons) {
-		for (int i = 0; i < theQuestionButtons.length; i++) {
-			theQuestionButtons[i].removeActionListener(theQuestionButtons[i].getActionListeners()[0]);
-			theQuestionButtons[i].setVisible(false);
-		}
+	public void drawAnswers(JButton[] theQuestionButtons, JLabel theQuestionLabel, JLabel[] theAnswerLabels) {
 		System.out.println(myQuestion);
-		for (int i = 0; i < myAnswers.length; i++) {
+		
+		for (int i = 0; i < theQuestionButtons.length; i++) {
 			if (i == myCorrect) {
-				System.out.print(">>>");
-			}
-			System.out.print(Integer.toString(i+1) + ") " + myAnswers[i]);
-			if (i == myCorrect) {
-				System.out.println("<<<");
+				System.out.println(">>>" + Integer.toString(i+1) + ") " + myAnswers[i] + "<<<");
+				// Hide buttons
+				theQuestionButtons[i].removeActionListener(theQuestionButtons[i].getActionListeners()[0]);
+				theQuestionButtons[i].setVisible(false);
 			} else {
-				System.out.println();
+				System.out.println(Integer.toString(i+1) + ") " + myAnswers[i]);
+				// Hide buttons
+				theQuestionButtons[i].removeActionListener(theQuestionButtons[i].getActionListeners()[0]);
+				theQuestionButtons[i].setVisible(false);
+				
+				// Hide labels
+				theAnswerLabels[i].setVisible(false);
+				theAnswerLabels[i].setText((i + 1) + ")");
 			}
 		}
 	}
