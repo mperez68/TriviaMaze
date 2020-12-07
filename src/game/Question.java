@@ -4,7 +4,7 @@
  * TCSS 360 - Fall 2020 Project
  */
 
-package map;
+package game;
 // TODO import GUI singleton
 
 import javax.swing.JButton;
