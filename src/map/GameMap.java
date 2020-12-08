@@ -15,10 +15,12 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import javax.swing.*;
 import java.io.*;
 
+import map.Door.AccessLevel;
 import map.Room;
 import map.Room.Direction;
 /**
@@ -561,14 +563,51 @@ public class GameMap{
 		try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(theFileName));
 			myGrid = (Room[][])in.readObject();
-			myMapPanel = (MapPanel)in.readObject();
+			in.readObject();
 			myGridWidth = (int)in.readObject();
 			myGridHeight = (int)in.readObject();
 			myGridLocation = (Point)in.readObject();
 			//myPlayerY = (int)in.readObject();
 			in.close();
 			moveToken((int)myGridLocation.getX(), (int)myGridLocation.getY());
-			draw();
+			myQuestionLabel.setVisible(false);
+			for (int i = 0; i < myAnswerLabels.length; i++) {
+				myAnswerLabels[i].setVisible(false);
+			}
+			myMapPanel.clear();
+	    	for (int i = 0; i < myDirectionalButtons.length; i++) {
+	    		myDirectionalButtons[i].removeActionListener(myDirectionalButtons[i].getActionListeners()[0]);
+			}
+	    	Set<Door> doors = new HashSet<Door>();
+	    	for (int i = 0; i < myGridWidth; i++) {
+	    		for (int j = 0; j < myGridHeight; j++) {
+	    			if (myGrid[i][j].getDoor(Direction.UP)!= null ) {
+	    				doors.add(myGrid[i][j].getDoor(Direction.UP));
+	    			}
+	    			if (myGrid[i][j].getDoor(Direction.DOWN)!= null ) {
+	    				doors.add(myGrid[i][j].getDoor(Direction.DOWN));
+	    			}
+	    			if (myGrid[i][j].getDoor(Direction.LEFT)!= null ) {
+	    				doors.add(myGrid[i][j].getDoor(Direction.LEFT));
+	    			}
+					if (myGrid[i][j].getDoor(Direction.RIGHT)!= null ) {
+						doors.add(myGrid[i][j].getDoor(Direction.RIGHT));
+					}
+	    		}
+	    	}
+	    	Iterator<Door> iter = doors.iterator();
+	    	Door temp = null;
+	    	while (iter.hasNext()) {
+	    		temp = iter.next();
+	    		if (temp.getState() == AccessLevel.LOCKED) {
+	    			temp.addLock(myMapPanel);
+	    		} else if (temp.getState() == AccessLevel.OPEN) {
+	    			temp.addOpen(myMapPanel);
+	    		}
+	    	}
+	    	draw();
+	    	myMapPanel.repaint();
+			
 		} catch(Exception e) {
 			System.out.println(e);
 			System.exit(0);

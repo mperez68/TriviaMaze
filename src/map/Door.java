@@ -121,6 +121,18 @@ public class Door implements Serializable {
 		return lockedFlag;
 	}
 	
+	public AccessLevel getState() {
+		return myAccess;
+	}
+	
+	public void addOpen(MapPanel theMapPanel) {
+		theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
+	}
+	
+	public void addLock(MapPanel theMapPanel) {
+		theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
+	}
+	
 	/**
 	 * Setter for access level of door (open, closed, locked).
 	 * @param The new access level of the door.
