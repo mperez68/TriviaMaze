@@ -9,11 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import map.Question;
-import java.io.*;
-//TODO import GUI singleton
+
+import java.io.Serializable;
 
 /**
  * This class defines the Door object which contains a Question object. Can be prompted to present the question and attempt
@@ -26,11 +28,11 @@ import java.io.*;
  * @date 11/27/2020
  * @version 2.0
  */
-public class Door implements Serializable{
+public class Door implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3254879297132631859L;
+	private static final long serialVersionUID = 307321392564991614L;
 
 	/**
 	 * Enumerated constants to ensure input is always valid.
@@ -78,9 +80,11 @@ public class Door implements Serializable{
 	 * @param theAccess The predetermined access level.
 	 * @param theQuestion The question object that must be answered to pass this door.
 	 */
-	public Door(int theX, int theY, AccessLevel theAccess, Question theQuestion) {
+	public Door(int theX, int theY, int theWidth, int theHeight, AccessLevel theAccess, Question theQuestion) {
 		myX = theX;
 		myY = theY;
+		myWidth = theWidth;
+		myHeight = theHeight;
 		myAccess = theAccess;
 		myQuestion = theQuestion;	
 	}
@@ -127,68 +131,107 @@ public class Door implements Serializable{
 	
 	/**
 	 * Attempt to enter the door. Prompts the player with a question.
+	 * @param theAnswerLabels 
+	 * @param theQuestionLabel 
+	 * @param theMapPanel 
 	 */
-	public void attempt(JButton[] theQuestionButtons) {
+	public void attempt(JButton[] theQuestionButtons, JLabel theQuestionLabel, JLabel[] theAnswerLabels, MapPanel theMapPanel, GameMap theGameMap) {
 		
 		if (myAccess.equals(AccessLevel.LOCKED)) {
 			System.out.println("Door Locked!");
 		} else {
-			myQuestion.draw();
+			myQuestion.draw(theQuestionLabel, theAnswerLabels);
 			// Light up buttons
 			for (int i = 0; i < theQuestionButtons.length; i++) {
 				theQuestionButtons[i].setVisible(true);
 			}
 			// Assign
-			theQuestionButtons[0].addActionListener(new ActionListener() {	// NORTH
+			theQuestionButtons[0].addActionListener(new ActionListener() {	// ANS 1
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
 	            	if (myQuestion.attempt(1)) {
 						myAccess = AccessLevel.OPEN;
+						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Correct!");
 					} else {
 						myAccess = AccessLevel.LOCKED;
+						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
+						if (!theGameMap.winPossible()) {
+							theMapPanel.repaint();
+                    		System.out.println("YOU LOSE!");
+                    		JOptionPane.showMessageDialog(null, "YOU LOSE!");
+                    		theGameMap.reset();
+						}
 					}
-	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	myQuestion.drawAnswers(theQuestionButtons, theQuestionLabel, theAnswerLabels);
+	            	theMapPanel.repaint();
 	            }
 	        });
-			theQuestionButtons[1].addActionListener(new ActionListener() {	// EAST
+			theQuestionButtons[1].addActionListener(new ActionListener() {	// ANS 2
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
 	            	if (myQuestion.attempt(2)) {
 						myAccess = AccessLevel.OPEN;
+						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Correct!");
 					} else {
 						myAccess = AccessLevel.LOCKED;
+						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
+						if (!theGameMap.winPossible()) {
+							theMapPanel.repaint();
+                    		System.out.println("YOU LOSE!");
+                    		JOptionPane.showMessageDialog(null, "YOU LOSE!");
+                    		theGameMap.reset();
+						}
 					}
-	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	myQuestion.drawAnswers(theQuestionButtons, theQuestionLabel, theAnswerLabels);
+	            	theMapPanel.repaint();
 	            }
 	        });
-			theQuestionButtons[2].addActionListener(new ActionListener() {	// SOUTH
+			theQuestionButtons[2].addActionListener(new ActionListener() {	// ANS 3
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
 	            	if (myQuestion.attempt(3)) {
 						myAccess = AccessLevel.OPEN;
+						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Correct!");
 					} else {
 						myAccess = AccessLevel.LOCKED;
+						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
+						if (!theGameMap.winPossible()) {
+							theMapPanel.repaint();
+                    		System.out.println("YOU LOSE!");
+                    		JOptionPane.showMessageDialog(null, "YOU LOSE!");
+                    		theGameMap.reset();
+						}
 					}
-	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	myQuestion.drawAnswers(theQuestionButtons, theQuestionLabel, theAnswerLabels);
+	            	theMapPanel.repaint();
 	            }
 	        });
-			theQuestionButtons[3].addActionListener(new ActionListener() {	// WEST
+			theQuestionButtons[3].addActionListener(new ActionListener() {	// ANS 4
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
 	            	if (myQuestion.attempt(4)) {
 						myAccess = AccessLevel.OPEN;
+						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Correct!");
 					} else {
 						myAccess = AccessLevel.LOCKED;
+						theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 						System.out.println("Wrong!");
+						if (!theGameMap.winPossible()) {
+							theMapPanel.repaint();
+                    		System.out.println("YOU LOSE!");
+                    		JOptionPane.showMessageDialog(null, "YOU LOSE!");
+                    		theGameMap.reset();
+						}
 					}
-	            	myQuestion.drawAnswers(theQuestionButtons);
+	            	myQuestion.drawAnswers(theQuestionButtons, theQuestionLabel, theAnswerLabels);
+	            	theMapPanel.repaint();
 	            }
 	        });
 			
