@@ -19,5 +19,9 @@ ITERATION 3
 Redesigns have been complete and we were able to work on the database. The GUI is loosely operational and we expect the project to be finished next week. Most significantly, with the GUI present we are able to
 officially begin checking off user stories.
 
+ITERATION 4
+
+Project mostly complete. All stories are completed so now we just have to do test and debug the game. Documentation update will officially complete the project following.
+
  - Logan Crawford, Marc Perez, Robbie Talbot
  (Crawfl5, perezm68, Robbie00)
