@@ -67,16 +67,15 @@ public class Question {
 		System.out.println(myQuestion);
 		
 		for (int i = 0; i < theQuestionButtons.length; i++) {
+			// Hide buttons
+			if (theQuestionButtons[i].getActionListeners().length != 0) {
+				theQuestionButtons[i].removeActionListener(theQuestionButtons[i].getActionListeners()[0]);
+				theQuestionButtons[i].setVisible(false);
+			}
 			if (i == myCorrect) {
 				System.out.println(">>>" + Integer.toString(i+1) + ") " + myAnswers[i] + "<<<");
-				// Hide buttons
-				theQuestionButtons[i].removeActionListener(theQuestionButtons[i].getActionListeners()[0]);
-				theQuestionButtons[i].setVisible(false);
 			} else {
 				System.out.println(Integer.toString(i+1) + ") " + myAnswers[i]);
-				// Hide buttons
-				theQuestionButtons[i].removeActionListener(theQuestionButtons[i].getActionListeners()[0]);
-				theQuestionButtons[i].setVisible(false);
 				
 				// Hide labels
 				theAnswerLabels[i].setVisible(false);

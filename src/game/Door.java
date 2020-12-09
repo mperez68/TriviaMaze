@@ -128,20 +128,25 @@ public class Door {
 	 * @param theQuestionLabel 
 	 * @param theMapPanel 
 	 */
-	public void attempt(JButton[] theQuestionButtons, JLabel theQuestionLabel, JLabel[] theAnswerLabels, MapPanel theMapPanel, GameMap theGameMap) {
+	public void attempt(JButton[] theQuestionButtons, JButton[] theDirectionalButtons, JLabel theQuestionLabel, JLabel[] theAnswerLabels,
+			MapPanel theMapPanel, GameMap theGameMap) {
 		
 		if (myAccess.equals(AccessLevel.LOCKED)) {
 			System.out.println("Door Locked!");
 		} else {
 			myQuestion.draw(theQuestionLabel, theAnswerLabels);
-			// Light up buttons
+			// Light up buttons, disable movement
 			for (int i = 0; i < theQuestionButtons.length; i++) {
 				theQuestionButtons[i].setVisible(true);
+				theDirectionalButtons[i].setVisible(false);
 			}
 			// Assign
 			theQuestionButtons[0].addActionListener(new ActionListener() {	// ANS 1
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
+					for (int i = 0; i < theQuestionButtons.length; i++) {	// enable movement again
+						theDirectionalButtons[i].setVisible(true);
+					}
 	            	if (myQuestion.attempt(1)) {
 						myAccess = AccessLevel.OPEN;
 						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
@@ -164,6 +169,9 @@ public class Door {
 			theQuestionButtons[1].addActionListener(new ActionListener() {	// ANS 2
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
+					for (int i = 0; i < theQuestionButtons.length; i++) {	// enable movement again
+						theDirectionalButtons[i].setVisible(true);
+					}
 	            	if (myQuestion.attempt(2)) {
 						myAccess = AccessLevel.OPEN;
 						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
@@ -186,6 +194,9 @@ public class Door {
 			theQuestionButtons[2].addActionListener(new ActionListener() {	// ANS 3
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
+					for (int i = 0; i < theQuestionButtons.length; i++) {	// enable movement again
+						theDirectionalButtons[i].setVisible(true);
+					}
 	            	if (myQuestion.attempt(3)) {
 						myAccess = AccessLevel.OPEN;
 						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
@@ -208,6 +219,9 @@ public class Door {
 			theQuestionButtons[3].addActionListener(new ActionListener() {	// ANS 4
 	            @Override
 	            public void actionPerformed(final ActionEvent theEvent) {
+					for (int i = 0; i < theQuestionButtons.length; i++) {	// enable movement again
+						theDirectionalButtons[i].setVisible(true);
+					}
 	            	if (myQuestion.attempt(4)) {
 						myAccess = AccessLevel.OPEN;
 						theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);

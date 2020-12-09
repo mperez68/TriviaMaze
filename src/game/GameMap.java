@@ -250,18 +250,6 @@ public class GameMap{
 		myFrame.setVisible(true);
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		generate(myGridWidth, myGridHeight);
-	}
-	/**
-	 * Redraws the map. Each room has it's own location, so this method calls each rooms individual draw method.
-	 */
-	public void draw() {
-		if (!myMapPanel.hasPlayerToken()){	// IF there is no player token on the map, create one in the Northwest room.
-			myMapPanel.addPlayerToken((myGridLocation.x * myRoomTokenWidth) + (myRoomTokenWidth / 2) - (myPlayerTokenWidth / 2),
-					(myGridLocation.y * myRoomTokenHeight) + (myRoomTokenHeight / 2) - (myPlayerTokenWidth / 2),
-					myPlayerTokenWidth, myPlayerTokenWidth);
-		}
-		
 		// Assign Dropdown Buttons
 		myMenuButtons[0].addActionListener(new ActionListener() {	// NEW GAME
             @Override
@@ -290,6 +278,19 @@ public class GameMap{
             	myFrame.dispose();
             }
         });
+		
+		generate(myGridWidth, myGridHeight);
+	}
+	/**
+	 * Redraws the map. Each room has it's own location, so this method calls each rooms individual draw method.
+	 */
+	public void draw() {
+		if (!myMapPanel.hasPlayerToken()){	// IF there is no player token on the map, create one in the Northwest room.
+			myMapPanel.addPlayerToken((myGridLocation.x * myRoomTokenWidth) + (myRoomTokenWidth / 2) - (myPlayerTokenWidth / 2),
+					(myGridLocation.y * myRoomTokenHeight) + (myRoomTokenHeight / 2) - (myPlayerTokenWidth / 2),
+					myPlayerTokenWidth, myPlayerTokenWidth);
+		}
+		// set local variable to reference this object for actionlisteners.
 		final GameMap thisMap = this;
 		// Assign Directional Buttons
 		myDirectionalButtons[0].addActionListener(new ActionListener() {	//NORTH
@@ -306,8 +307,8 @@ public class GameMap{
             			}
             			
             		} else {
-	            		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.UP, myQuestionButtons, myQuestionLabel,
-	            				myAnswerLabels, myMapPanel, thisMap);
+	            		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.UP, myQuestionButtons, myDirectionalButtons, 
+	            				myQuestionLabel, myAnswerLabels, myMapPanel, thisMap);
 	                    System.out.println(Direction.UP.toString() + " is " + myGrid[myGridLocation.x][myGridLocation.y].isNotLocked((Direction.UP)));
             		}
             	} else {
@@ -329,8 +330,8 @@ public class GameMap{
             				reset();
             			}
             		} else {
-            			myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.RIGHT, myQuestionButtons, myQuestionLabel, 
-	            				myAnswerLabels, myMapPanel, thisMap);
+            			myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.RIGHT, myQuestionButtons, myDirectionalButtons, 
+	            				myQuestionLabel, myAnswerLabels, myMapPanel, thisMap);
             			System.out.println(Direction.RIGHT.toString() + " is " + myGrid[myGridLocation.x][myGridLocation.y].isNotLocked(Direction.RIGHT));
             		}
             	} else {
@@ -352,8 +353,8 @@ public class GameMap{
             				reset();
             			}
             		} else {
-                		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.DOWN, myQuestionButtons, myQuestionLabel, 
-	            				myAnswerLabels, myMapPanel, thisMap);
+                		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.DOWN, myQuestionButtons, myDirectionalButtons, 
+	            				myQuestionLabel, myAnswerLabels, myMapPanel, thisMap);
                         System.out.println(Direction.DOWN.toString() + " is " + myGrid[myGridLocation.x][myGridLocation.y].isNotLocked(Direction.DOWN));
             		}
             	} else {
@@ -375,8 +376,8 @@ public class GameMap{
             				reset();
             			}
             		} else {
-                		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.LEFT, myQuestionButtons, myQuestionLabel, 
-	            				myAnswerLabels, myMapPanel, thisMap);
+                		myGrid[myGridLocation.x][myGridLocation.y].attempt(Direction.LEFT, myQuestionButtons, myDirectionalButtons, 
+	            				myQuestionLabel, myAnswerLabels, myMapPanel, thisMap);
                         System.out.println(Direction.LEFT.toString() + " is " + myGrid[myGridLocation.x][myGridLocation.y].isNotLocked(Direction.LEFT));
             		}
             	} else {
@@ -441,6 +442,17 @@ public class GameMap{
 			myGrid = null;
 			//myMapPanel.clear();
 		}
+		
+		// Make sure buttons and labels are at correct visibility in the case of resets and loads.
+		for (int i = 0; i < myDirectionalButtons.length; i++) {
+			myDirectionalButtons[i].setVisible(true);
+			myQuestionButtons[i].setVisible(false);
+			if (myQuestionButtons[i].getActionListeners().length != 0) {
+				myQuestionButtons[i].removeActionListener(myQuestionButtons[i].getActionListeners()[0]);
+			}
+			myAnswerLabels[i].setVisible(false);
+		}
+		myQuestionLabel.setVisible(false);
 		
 		// Set global GUI variables not yet assigned.
 		myRoomTokenWidth = myMapPanel.getWidth() / theM;
@@ -581,7 +593,8 @@ public class GameMap{
 	 * @param theDirection UP, DOWN, LEFT, or RIGHT; determines direction player travels.
 	 */
 	public void attempt(Direction theDirection) {
-		myGrid[myGridLocation.x][myGridLocation.y].attempt(theDirection, myQuestionButtons, myQuestionLabel, myAnswerLabels, myMapPanel, this);
+		myGrid[myGridLocation.x][myGridLocation.y].attempt(theDirection, myQuestionButtons, myDirectionalButtons, 
+				myQuestionLabel, myAnswerLabels, myMapPanel, this);
 		draw();
 	}
 	

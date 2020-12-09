@@ -142,9 +142,9 @@ public class Room {
 	 * @param theQuestionLabel 
 	 * @param theMapPanel 
 	 */
-	public void attempt(Direction theDirection, JButton[] theQuestionButtons, JLabel theQuestionLabel, JLabel[] theAnswerLabels,
-			MapPanel theMapPanel, GameMap theGameMap) {
-		myAdjacentDoors[theDirection.getValue()].attempt(theQuestionButtons, theQuestionLabel,
+	public void attempt(Direction theDirection, JButton[] theQuestionButtons, JButton[] theDirectionalButtons,
+			JLabel theQuestionLabel, JLabel[] theAnswerLabels, MapPanel theMapPanel, GameMap theGameMap) {
+		myAdjacentDoors[theDirection.getValue()].attempt(theQuestionButtons, theDirectionalButtons, theQuestionLabel,
 				theAnswerLabels, theMapPanel, theGameMap);
 	}
 }
