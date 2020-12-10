@@ -15,11 +15,19 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 import javax.swing.*;
 
 import game.Room;
 import game.Room.Direction;
+import game.Door;
+import game.Door.AccessLevel;
 /**
  * Encapsulating Container class. Holds a grid of all Rooms in game session, which in turn hold all Door and Question
  * objects. Includes public methods that allow manipulation 
@@ -37,13 +45,20 @@ import game.Room.Direction;
  * @author Marc Perez (perezm68)
  * @date 11/27/2020
  * @version 3.0
+ * @author Logan Crawford (crawfl5)
+ * @date 12/9/2020
+ * @version 4.0
  */
-public class GameMap{	
+public class GameMap implements Serializable {	
+	/**
+	 * Randomly generated serial ID for saving/loading state.
+	 */
+	private static final long serialVersionUID = -3460054560215252979L;
 					// --------------- GUI Scaling Variables --------------- //
 	/**
 	 * 2 Dimensional definition of screen size in pixels.
 	 */
-    private static final Dimension FRAME_SIZE = new Dimension(1024, 768);
+    private static final Dimension FRAME_SIZE = new Dimension(900, 720);
     /**
      * Border depth in pixels.
      */
@@ -158,7 +173,7 @@ public class GameMap{
 	/**
 	 * Current player location on the grid.
 	 */
-	private final Point myGridLocation = new Point(0,0);
+	private Point myGridLocation = new Point(0,0);
 					// --------------- Methods --------------- //
 	/**
 	 * Constructor for the GameMap object. Assigns scalars for GUI objects to refer to.
@@ -546,34 +561,81 @@ public class GameMap{
 	 * Saves current map player location, rooms, doors, and questions to a text file.
 	 */
 	public void save(String theFileName) {
-		System.out.println("Saving as \"" + theFileName + "\"...");
 		// TODO save map to file.
-		
-		// save in format (a file path will need to be reported from GUI):
-		// theM 
-		// theN
-		// myPlayerX 
-		// myPlayerY
-		// myGrid[0][0] RIGHT door state
-		// myGrid[0][0] DOWN door state
-		// myGrid[0][1] RIGHT door state
-		// myGrid[0][1] DOWN door state
-		// ...
-		// ...
-		// myGrid[theM - 1][theN - 1] RIGHT door state
-		// myGrid[theM - 1][theN - 1] DOWN door state
-		// 0
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(theFileName));
+			out.writeObject(myGrid);
+			out.writeObject(myMapPanel);
+			out.writeObject(myGridWidth);
+			out.writeObject(myGridHeight);
+			out.writeObject(myGridLocation);
+			//out.writeObject(myPlayerY);
+			out.flush();
+			out.close();
+		} catch(Exception e) {
+			System.out.println(e);
+			System.exit(0);
+		}
 	}
 	/**
 	 * Loads a saved map from a file of the name given.
 	 * @param theFileName FULL file name with extension of the file to load from.
 	 */
 	public void load(String theFileName) {
-		System.out.println("Loading from \"" + theFileName + "\"...");
 		// TODO load map from file.
 		
-		// build map based on format from save(theFileName)
-		// a file path will need to be reported from GUI
+		try {
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(theFileName));
+			myGrid = (Room[][])in.readObject();
+			in.readObject();
+			myGridWidth = (int)in.readObject();
+			myGridHeight = (int)in.readObject();
+			myGridLocation = (Point)in.readObject();
+			//myPlayerY = (int)in.readObject();
+			in.close();
+			moveToken((int)myGridLocation.getX(), (int)myGridLocation.getY());
+			myQuestionLabel.setVisible(false);
+			for (int i = 0; i < myAnswerLabels.length; i++) {
+				myAnswerLabels[i].setVisible(false);
+			}
+			myMapPanel.clear();
+	    	for (int i = 0; i < myDirectionalButtons.length; i++) {
+	    		myDirectionalButtons[i].removeActionListener(myDirectionalButtons[i].getActionListeners()[0]);
+			}
+	    	Set<Door> doors = new HashSet<Door>();
+	    	for (int i = 0; i < myGridWidth; i++) {
+	    		for (int j = 0; j < myGridHeight; j++) {
+	    			if (myGrid[i][j].getDoor(Direction.UP)!= null ) {
+	    				doors.add(myGrid[i][j].getDoor(Direction.UP));
+	    			}
+	    			if (myGrid[i][j].getDoor(Direction.DOWN)!= null ) {
+	    				doors.add(myGrid[i][j].getDoor(Direction.DOWN));
+	    			}
+	    			if (myGrid[i][j].getDoor(Direction.LEFT)!= null ) {
+	    				doors.add(myGrid[i][j].getDoor(Direction.LEFT));
+	    			}
+					if (myGrid[i][j].getDoor(Direction.RIGHT)!= null ) {
+						doors.add(myGrid[i][j].getDoor(Direction.RIGHT));
+					}
+	    		}
+	    	}
+	    	Iterator<Door> iter = doors.iterator();
+	    	Door temp = null;
+	    	while (iter.hasNext()) {
+	    		temp = iter.next();
+	    		if (temp.getState() == AccessLevel.LOCKED) {
+	    			temp.addLock(myMapPanel);
+	    		} else if (temp.getState() == AccessLevel.OPEN) {
+	    			temp.addOpen(myMapPanel);
+	    		}
+	    	}
+	    	draw();
+	    	myMapPanel.repaint();
+			
+		} catch(Exception e) {
+			System.out.println(e);
+			System.exit(0);
+		}
 	}
 	
 	/**

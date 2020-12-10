@@ -11,6 +11,7 @@ import java.awt.Point;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.io.Serializable;
 
 import game.Door;
 
@@ -25,7 +26,12 @@ import game.Door;
  * @date 11/27/2020
  * @version 2.0
  */
-public class Room {
+public class Room implements Serializable {
+	/**
+	 * Randomly generated serial ID for saving/loading state.
+	 */
+	private static final long serialVersionUID = 3232937702176484868L;
+
 	/**
 	 * Enumerated type to control input variance. Each direction corresponds to the array locations associated in the
 	 * myAdjacentDoors array.

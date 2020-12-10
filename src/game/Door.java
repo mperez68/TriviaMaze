@@ -12,8 +12,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.io.Serializable;
 
 import game.Question;
+import game.MapPanel;
 
 /**
  * This class defines the Door object which contains a Question object. Can be prompted to present the question and attempt
@@ -22,11 +24,24 @@ import game.Question;
  * Version 2.0: Added method changeState(), added constructor Door(theX, theY, theAccess, theQuestion).
  *
  * @author Marc Perez (perezm68)
+ * @date 11/16/2020
+ * @version 1.0
  * @author Logan Crawford (crawfl5)
- * @date 11/27/2020
+ * @date 11/22/2020
  * @version 2.0
+ * @author Marc Perez (perezm68)
+ * @date 11/27/2020
+ * @version 3.0
+ * @author Logan Crawford (crawfl5)
+ * @date 12/9/2020
+ * @version 4.0
  */
-public class Door {
+public class Door implements Serializable{
+	/**
+	 * Randomly generated serial ID for saving/loading state.
+	 */
+	private static final long serialVersionUID = -8134799949951062726L;
+
 	/**
 	 * Enumerated constants to ensure input is always valid.
 	 */
@@ -112,6 +127,32 @@ public class Door {
 			lockedFlag = true;
 		}
 		return lockedFlag;
+	}
+	
+	/**
+	 * Getter for the enumerated state of the door.
+	 * @return The open/closed/locked state of the game.
+	 */
+	public AccessLevel getState() {
+		return myAccess;
+	}
+	
+	/**
+	 * Used by load game method in GameMap to change the state of the door on the drawing panel
+	 * to open.
+	 * @param theMapPanel The panel that the game is currently using.
+	 */
+	public void addOpen(MapPanel theMapPanel) {
+		theMapPanel.addOpen(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
+	}
+	
+	/**
+	 * Used by load game method in GameMap to change the state of the door on the drawing panel
+	 * to locked.
+	 * @param theMapPanel The panel that the game is currently using.
+	 */
+	public void addLock(MapPanel theMapPanel) {
+		theMapPanel.addLock(myX + 2, myY + 2, myWidth - 4, myHeight - 4);
 	}
 	
 	/**

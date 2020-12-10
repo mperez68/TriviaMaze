@@ -9,6 +9,7 @@ package game;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import java.io.Serializable;
 
 /**
  * This class defines the Question object. The Question object is intended to contain the question and answer data
@@ -19,7 +20,11 @@ import javax.swing.JLabel;
  * @date 11/16/2020
  * @version 1.0
  */
-public class Question {
+public class Question implements Serializable {
+	/**
+	 * Randomly generated serial ID for saving/loading state.
+	 */
+	private static final long serialVersionUID = 3833979221970235640L;
 	/**
 	 * Container for the question text.
 	 */

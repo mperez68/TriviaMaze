@@ -2,7 +2,10 @@ package game;
 
 
 import java.util.Map;
+import java.util.Scanner;
 import java.util.HashMap;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -23,6 +26,14 @@ public class DatabaseConnection {
 	final static String URL = "jdbc:sqlite:questions_answers.db";
 	
 	public static void build() {
+		
+		File dbStatus = new File("db_status.txt");
+		try {
+		Scanner fileReader = new Scanner(dbStatus);
+		String cont = fileReader.next();
+		fileReader.close();
+		if (!cont.equals("TRUE")) {
+		
 		SQLiteDataSource ds = null;
         try {
             ds = new SQLiteDataSource();
@@ -47,7 +58,6 @@ public class DatabaseConnection {
 												+ "PRIMARY KEY(ANSWER, QID),"
 												+ "FOREIGN KEY (QID) REFERENCES QUESTIONS(QID) );");
 												
-			// insert questions into tables
 			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 1, 'FILLER QUESTION  1');");
 			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 2, 'FILLER QUESTION  2');");
 			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 3, 'FILLER QUESTION  3');");
@@ -289,10 +299,18 @@ public class DatabaseConnection {
 			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 40, 0);");
 			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 40, 0);");
 			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 40, 0);");
-			
+			//}
 		} catch (Exception e) {
 			e.printStackTrace();
             System.exit(0);
+		}
+		FileWriter fw = new FileWriter("db_status.txt");
+		fw.write("TRUE");
+		fw.close();
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
+				System.exit(0);
 		}
 	}
 

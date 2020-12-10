@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 import java.util.List;
+import java.io.Serializable;
 
 import javax.swing.JPanel;
 /**
@@ -19,7 +20,7 @@ import javax.swing.JPanel;
  * @version 1.0
  *
  */
-public class MapPanel extends JPanel {
+public class MapPanel extends JPanel implements Serializable {
     
     /**  A generated serial version UID for object Serialization. */
     private static final long serialVersionUID = 8452917670991316606L;
