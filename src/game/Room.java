@@ -111,7 +111,7 @@ public class Room implements Serializable {
 	 * @param theDirection the direction outward from this room towards the chosen door.
 	 * @param theDoor The new Door object being placed. Will not be placed if a door already exists there.
 	 */
-	protected void setDoor(Direction theDirection, Door theDoor) {
+	public void setDoor(Direction theDirection, Door theDoor) {
 		if (myAdjacentDoors[theDirection.getValue()] == null) {
 			myAdjacentDoors[theDirection.getValue()] = theDoor;
 		}

@@ -561,7 +561,6 @@ public class GameMap implements Serializable {
 	 * Saves current map player location, rooms, doors, and questions to a text file.
 	 */
 	public void save(String theFileName) {
-		// TODO save map to file.
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(theFileName));
 			out.writeObject(myGrid);
@@ -582,7 +581,6 @@ public class GameMap implements Serializable {
 	 * @param theFileName FULL file name with extension of the file to load from.
 	 */
 	public void load(String theFileName) {
-		// TODO load map from file.
 		
 		try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(theFileName));

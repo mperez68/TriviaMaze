@@ -5,7 +5,6 @@
  */
 
 package game;
-// TODO import GUI singleton
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
