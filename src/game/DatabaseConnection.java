@@ -58,247 +58,247 @@ public class DatabaseConnection {
 												+ "PRIMARY KEY(ANSWER, QID),"
 												+ "FOREIGN KEY (QID) REFERENCES QUESTIONS(QID) );");
 												
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 1, 'FILLER QUESTION  1');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 2, 'FILLER QUESTION  2');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 3, 'FILLER QUESTION  3');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 4, 'FILLER QUESTION  4');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 5, 'FILLER QUESTION  5');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 6, 'FILLER QUESTION  6');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 7, 'FILLER QUESTION  7');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 8, 'FILLER QUESTION  8');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 9, 'FILLER QUESTION  9');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (10, 'FILLER QUESTION 10');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (11, 'FILLER QUESTION 11');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (12, 'FILLER QUESTION 12');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (13, 'FILLER QUESTION 13');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (14, 'FILLER QUESTION 14');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (15, 'FILLER QUESTION 15');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (16, 'FILLER QUESTION 16');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (17, 'FILLER QUESTION 17');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (18, 'FILLER QUESTION 18');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (19, 'FILLER QUESTION 19');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (20, 'FILLER QUESTION 20');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (21, 'FILLER QUESTION 21');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (22, 'FILLER QUESTION 22');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (23, 'FILLER QUESTION 23');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (24, 'FILLER QUESTION 24');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (25, 'FILLER QUESTION 25');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (26, 'FILLER QUESTION 26');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (27, 'FILLER QUESTION 27');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (28, 'FILLER QUESTION 28');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (29, 'FILLER QUESTION 29');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (30, 'FILLER QUESTION 30');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (31, 'FILLER QUESTION 31');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (32, 'FILLER QUESTION 32');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (33, 'FILLER QUESTION 33');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (34, 'FILLER QUESTION 34');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (35, 'FILLER QUESTION 35');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (36, 'FILLER QUESTION 36');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (37, 'FILLER QUESTION 37');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (38, 'FILLER QUESTION 38');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (39, 'FILLER QUESTION 39');");
-			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (40, 'FILLER QUESTION 40');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 1, 'Which of the historical figures lived between the years of 1815 and 1898?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 2, 'Who was the first Western explorer to reach China?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 3, 'In 1971, Idi Amin led a military coup in which country?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 4, 'Prime Minister Golda Meir was the leader in what country?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 5, 'Which U.S. President established trade between the U.S. and China during the Cold War?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 6, 'What controversial structure went up in 1961 and came down in 1990?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 7, 'What political work did Karl Marx co-author?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 8, 'What is the name of the famous battle in which Napoleon Bonaparte was finally defeated?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES ( 9, 'The assassination of what political leader helped trigger the start of World War 1?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (10, 'Which leader was officially referred to as the Dear Leader?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (11, 'The battle of Hastings in 1066 was fought in which country?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (12, 'Which of these famous generals never lost a battle?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (13, 'Roughly how much per acre did the U.S. pay Russia for the land that is now Alaska?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (14, 'Which student of Aristotle became king of Macedonia and conquered almost all of Persia?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (15, 'Who was in the command module while Neil Armstrong and Buzz Aldrin were on the moon?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (16, 'Fame Roman slave and gladiator, Spartacus, was born in which country?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (17, 'Who is credited with sewing the first U.S. flag?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (18, 'The Hundred Years War was fought between which 2 countries?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (19, 'Who replaced Boris Yeltsin as President of Russia in 1999?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (20, 'What was the first Dynasty in China?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (21, 'Which great leader commited a treasonous act and crossed the Rubicon River?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (22, 'Who is credited with the immoral words: Let them eat cake?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (23, 'Where did the Industrial Revolution begin?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (24, 'The inhabitants of Easter Island originated from which culture?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (25, 'Which of the following figures did not live in the 6th century B.C.?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (26, 'The departure of Soviet troops from Czechoslovakia was part of which event?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (27, 'The Incan Empire was located in which modern country?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (28, 'The Battle of the Bulge took place in which war?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (29, 'Before independece, what was Bangladesh called?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (30, 'What was the Great Western Schism?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (31, 'The first year of the Islamic calender marks which of the following events?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (32, 'Balboa was the first European to do which of the following activities?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (33, 'The invasion of the Goths in the 5th century led to the end of which empire?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (34, 'Who was the first female Prime Minister of Great Britian?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (35, 'What charter was passed by King John of England in 1215?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (36, 'The Reign of Terror was a period during which major social-political event?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (37, 'Where were the first modern Olympics held in 1896?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (38, 'Who created the first successful printing press?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (39, 'The Protestant Reformation was started by whom?');");
+			st.executeUpdate("INSERT OR REPLACE INTO QUESTIONS VALUES (40, 'What culture did the Romans inherit the aqueduct technology from?');");
 			
 			// INSERT OR REPLACE answers into tables
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 1, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 1, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 1, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 1, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Otto von Bismarck', 1, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Thomas Jefferson', 1, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Grigori Rasputin', 1, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Mohandas K. Ghandi', 1, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 2, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 2, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 2, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 2, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Ferdinand Magelian', 2, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('James Cook', 2, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Sir Francis Drake', 2, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Marco Polo', 2, 1);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 3, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 3, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 3, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 3, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Papua New Guinea', 3, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Angola', 3, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Ghana', 3, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Uganda', 3, 1);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 4, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 4, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 4, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 4, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Pakistan', 4, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Israel', 4, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Peru', 4, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('India', 4, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 5, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 5, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 5, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 5, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Jimmy Carter', 5, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Ronald Reagan', 5, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Gerald Ford', 5, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Richard Nixon', 5, 1);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 6, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 6, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 6, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 6, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Great Wall', 6, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Jorba Laboratories', 6, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Berlin Wall', 6, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('John Wayce Gacys home', 6, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 7, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 7, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 7, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 7, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Mein Kampf', 7, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Wealth of Nations', 7, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Communist Manifesto', 7, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Jungle', 7, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 8, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 8, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 8, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 8, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Battle of Rolica', 8, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Battle of Waterloo', 8, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Battle of Stalingrad', 8, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Battle of Hastings', 8, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 9, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 9, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 9, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 9, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Boutros Ghali', 9, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Franz Ferdinand', 9, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Czar Nicholas II', 9, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('William McKinley', 9, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 10, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 10, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 10, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 10, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Vladimir Putin', 10, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Kim Jong Il', 10, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Adolf Jitler', 10, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Fidel Castro', 10, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 11, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 11, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 11, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 11, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Norway', 11, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('France', 11, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Russia', 11, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('England', 11, 1);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 12, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 12, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 12, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 12, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Julius Caesar', 12, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Alexander the Great', 12, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Genghis Khan', 12, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Douglas MacArthur', 12, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 13, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 13, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 13, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 13, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('2 cents', 13, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('50 cents', 13, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('$5.00', 13, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('$12.50', 13, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 14, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 14, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 14, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 14, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('William of Normandy', 14, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Alexander the Great', 14, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Attila the Hun', 14, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Mark Anthony', 14, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 15, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 15, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 15, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 15, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('John Glenn', 15, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Eugene Cernan', 15, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Michael Collins', 15, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Jim Lovell', 15, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 16, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 16, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 16, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 16, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Greece', 16, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Italy', 16, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Bulgaria', 16, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Albania', 16, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 17, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 17, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 17, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 17, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Molly Pitcher', 17, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Betsy Ross', 17, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Abigail Adams', 17, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Martha Washington', 17, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 18, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 18, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 18, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 18, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Italy and Greece', 18, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Spain and England', 18, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('England and Germany', 18, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('England and France', 18, 1);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 19, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 19, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 19, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 19, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Vladimir Putin', 19, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Dmitry Medvedev', 19, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Mikhail Gorbachev', 19, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Gennady Yanayev', 19, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 20, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 20, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 20, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 20, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Zhou Dynasty', 20, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Qin Dynasty', 20, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Xia Dynasty', 20, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Shang Dynasty', 20, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 21, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 21, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 21, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 21, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Alexander the Great', 21, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Augustus Caesar', 21, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Julius Caesar', 21, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Marcus Aurelius', 21, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 22, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 22, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 22, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 22, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Josephine de Beauharnais', 22, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Marie Antoinette', 22, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('King Louis XVI', 22, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Maria Amalia', 22, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 23, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 23, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 23, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 23, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('United States', 23, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('France', 23, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('China', 23, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('England', 23, 1);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 24, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 24, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 24, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 24, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Mayans', 24, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Celts', 24, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Polynesians', 24, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Sardinians', 24, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 25, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 25, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 25, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 25, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Confucius', 25, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Buddha', 25, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Pythagoras', 25, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Nero', 25, 1);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 26, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 26, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 26, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 26, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Velvet Revolution', 26, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The October Revolution', 26, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Prague Spring', 26, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Cultural Revolution', 26, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 27, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 27, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 27, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 27, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Mexico', 27, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Central America', 27, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Peru', 27, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Brazil', 27, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 28, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 28, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 28, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 28, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('World War I', 28, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('World War II', 28, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Napoleonic Wars', 28, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Vietnam', 28, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 29, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 29, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 29, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 29, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Ceylon', 29, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('East Pakistan', 29, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Bhutan', 29, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Bangalore', 29, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 30, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 30, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 30, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 30, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Christianity split into Catholicism and Protestantism', 30, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The great theological debate over the Trinity', 30, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('More than one pope claimed authority over the Roman Catholic Church', 30, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Eastern Orthodox church and the Western Roman church divided', 30, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 31, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 31, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 31, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 31, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The birth of Muhammad', 31, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Quran is assembled into a single sacred text', 31, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The division of the Sunnis and the Shiites', 31, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Muhammads flight from Mecca to Medina', 31, 1);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 32, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 32, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 32, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 32, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Encounter the Pacific Ocean', 32, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Circumnavigate the globe', 32, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Sail around the Cape of Good Hope', 32, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Encounter the Horn of Africa', 32, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 33, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 33, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 33, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 33, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Byzantine', 33, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Holy Roman', 33, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Roman', 33, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Ottoman', 33, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 34, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 34, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 34, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 34, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Florence Nightingale', 34, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Margaret Thatcher', 34, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Queen Elizabeth II', 34, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Jane Austen', 34, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 35, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 35, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 35, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 35, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Mayflower Compact', 35, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Magna Carta', 35, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Stamp Act', 35, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Quartering Act', 35, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 36, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 36, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 36, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 36, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('American Revolution', 36, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Cuban Revolution', 36, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Haitian Revolution', 36, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('French Revolution', 36, 1);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 37, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 37, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 37, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 37, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('France', 37, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Italy', 37, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Greece', 37, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('England', 37, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 38, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 38, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 38, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 38, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Johannes Gutenberg', 38, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Benjamin Franklin', 38, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('John Calvin', 38, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Nicolaus Copernicus', 38, 0);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 39, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 39, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 39, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 39, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('John Calvin', 39, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Francis Bacon', 39, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Voltaire', 39, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('Martin Luther', 39, 1);");
 			
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('A', 40, 1);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('B', 40, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('C', 40, 0);");
-			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('D', 40, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Greeks', 40, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Celts', 40, 0);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Etruscans', 40, 1);");
+			st.executeUpdate("INSERT OR REPLACE INTO ANSWERS VALUES ('The Carthiginians', 40, 0);");
 			//}
 		} catch (Exception e) {
 			e.printStackTrace();

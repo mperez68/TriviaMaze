@@ -600,6 +600,15 @@ public class GameMap implements Serializable {
 	    	for (int i = 0; i < myDirectionalButtons.length; i++) {
 	    		myDirectionalButtons[i].removeActionListener(myDirectionalButtons[i].getActionListeners()[0]);
 			}
+	    	for (int i = 0; i < myDirectionalButtons.length; i++) {
+				myDirectionalButtons[i].setVisible(true);
+				myQuestionButtons[i].setVisible(false);
+				if (myQuestionButtons[i].getActionListeners().length != 0) {
+					myQuestionButtons[i].removeActionListener(myQuestionButtons[i].getActionListeners()[0]);
+				}
+				myAnswerLabels[i].setVisible(false);
+			}
+			myQuestionLabel.setVisible(false);
 	    	Set<Door> doors = new HashSet<Door>();
 	    	for (int i = 0; i < myGridWidth; i++) {
 	    		for (int j = 0; j < myGridHeight; j++) {
