@@ -540,7 +540,9 @@ public class GameMap implements Serializable {
 		} else {
 			for (Map.Entry<String, Integer > mapElement : dbQuestions.entrySet()) {
 				dbAnswers = DatabaseConnection.getAnswers(mapElement.getValue());
+				System.out.println("Question: " + mapElement.getKey());
 				for (Map.Entry<String, Integer> questionElement : dbAnswers.entrySet()) {
+					System.out.println("Answer" + j + ": " + questionElement.getKey());
 					tempAnswers[j] = questionElement.getKey();
 					if (questionElement.getValue() == 1) {
 						tempCorrect = j;
@@ -548,11 +550,10 @@ public class GameMap implements Serializable {
 					j++;
 				}
 				j = 0;
-				questionList.push(new Question(mapElement.getKey(), tempAnswers, tempCorrect)); 
+				questionList.push(new Question(mapElement.getKey(), tempAnswers.clone(), tempCorrect)); 
 			}
 			System.out.println(theLength + " Questions Generated...");
 		}
-		
 		
 		return questionList;
 	}
