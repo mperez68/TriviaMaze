@@ -10,6 +10,8 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Map;
@@ -489,20 +491,20 @@ public class GameMap implements Serializable {
 		myGridLocation.setLocation(0, 0);
 		// Generate list of Q/A's
 		final int numEdges = ( (theM-1) * theN ) + ( (theN-1) * theM );
-		Deque<Question> questionList = fillList(numEdges);
+		ArrayList<Question> questionList = fillList(numEdges);
 		// fill empty rooms with doors.
 		Door tempDoor;
 		for (int i = 0; i < theM; i++) {
 			for (int j = 0; j < theN; j++) {
 				if (i + 1 < theM) {	// IF room exists to the right, THEN create door
 					tempDoor = new Door( (myRoomTokenWidth * i) + myRoomTokenWidth - (myDoorDepth / 4), (myRoomTokenHeight * j) + (myRoomTokenHeight / 4),
-							myDoorDepth / 2, myRoomTokenHeight / 2, questionList.pop());
+							myDoorDepth / 2, myRoomTokenHeight / 2, questionList.remove(0));
 					myGrid[i][j].setDoor( Direction.RIGHT, tempDoor);
 					myGrid[i+1][j].setDoor( Direction.LEFT, tempDoor);
 				}
 				if (j + 1 < theN) { // IF room exists below, THEN create door
 					tempDoor = new Door( (myRoomTokenWidth * i) + (myRoomTokenWidth / 4), (myRoomTokenHeight * j) + myRoomTokenHeight - (myDoorDepth / 4),
-							myRoomTokenWidth / 2, myDoorDepth / 2, questionList.pop());
+							myRoomTokenWidth / 2, myDoorDepth / 2, questionList.remove(0));
 					myGrid[i][j].setDoor( Direction.DOWN, tempDoor );
 					myGrid[i][j+1].setDoor( Direction.UP, tempDoor );
 				}
@@ -515,11 +517,11 @@ public class GameMap implements Serializable {
 	 * @param theLength	
 	 * @return
 	 */
-	private Deque<Question> fillList(int theLength) {
+	private ArrayList<Question> fillList(int theLength) {
 		
 		DatabaseConnection.build();
 		
-		Deque<Question> questionList = new LinkedList<Question>();
+		ArrayList<Question> questionList = new ArrayList<Question>();
 		String tempAnswers[] = new String[4];
 		
 		Map<String, Integer> dbQuestions = DatabaseConnection.getQuestions();
@@ -534,7 +536,7 @@ public class GameMap implements Serializable {
 				tempAnswers[1] = "ANS2";
 				tempAnswers[2] = "ANS3";
 				tempAnswers[3] = "ANS4";
-				questionList.push(new Question("QUESTION", tempAnswers, 1));
+				questionList.add(new Question("QUESTION", tempAnswers, 1));
 			}
 			System.out.println("Not Enough Questions in Database, filled with dummy data...");
 		} else {
@@ -550,10 +552,11 @@ public class GameMap implements Serializable {
 					j++;
 				}
 				j = 0;
-				questionList.push(new Question(mapElement.getKey(), tempAnswers.clone(), tempCorrect)); 
+				questionList.add(new Question(mapElement.getKey(), tempAnswers.clone(), tempCorrect)); 
 			}
 			System.out.println(theLength + " Questions Generated...");
 		}
+		Collections.shuffle(questionList);
 		
 		return questionList;
 	}
